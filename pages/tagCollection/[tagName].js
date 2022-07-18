@@ -21,14 +21,12 @@ const tagCollection = () => {
         const storedPhotos = sessionStorage.getItem('photos')
         if (userID && tagName) {
             if (storedPhotos.length && !photos.length) {
-                console.log(JSON.parse(storedPhotos))
                 dispatch(setPhotos(JSON.parse(storedPhotos)))
             } else if (!photos.length) fetchPhotos();
         }
     }, [userID, router])
 
     const fetchPhotos = async () => {
-        console.log('fetching')
         const res = await fetch(`/api/getPhotosByTag?userID=${userID}&tag=${tagName}`)
         const photosRes = await res.json()
 

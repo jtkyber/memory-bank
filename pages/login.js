@@ -22,7 +22,6 @@ const Login = () => {
               })
             });
             const user = await res.json();
-            console.log(user)
             const userObject = {
                 userID: user.id,
                 username: user.username,
