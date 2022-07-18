@@ -1,0 +1,27 @@
+.container {
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0 2rem;
+
+    .navChunk {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+    }
+
+    .leftNav {
+        justify-content: flex-start;
+        
+        .appTitle {
+            cursor: pointer;
+        }
+    }
+    .rightNav {
+        justify-content: flex-end;
+    }
+}

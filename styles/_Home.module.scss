@@ -1,0 +1,43 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 2rem;
+
+    h1 {
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .tagFoldersContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .singleTagFolder {
+            width: 10rem;
+            height: 8rem;
+            border: 2px solid black;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s ease-out;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($color: #000000, $alpha: 1.0);
+                h3 {
+                    color: white;
+                }
+            }
+
+        }
+    }
+}

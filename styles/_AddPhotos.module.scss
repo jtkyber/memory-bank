@@ -1,0 +1,85 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 1rem;
+    gap: 3rem;
+
+    .formContainer {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        gap: 1rem;
+
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 20rem;
+            height: 100%;
+            gap: 1rem;
+
+            .fileInput {
+
+            }
+
+            .descInput {
+                max-width: 100%;
+            }
+
+            .tagContainer {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                height: max-content;
+                border: 1px solid black;
+                gap: 0.3rem;
+                padding: 0.2rem;
+    
+                h5 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid black;
+                    border-radius: 0.2rem;
+                    height: 1.5rem;
+                    padding: 0 0.2rem;
+                    font-weight: 600;
+                }
+    
+                .tagInput {
+                    display: flex;
+                    flex: 1;
+                    width: 4rem;
+                    height: 1.5rem;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .previewContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 2rem;
+
+        .singleImgPreviewContainer {
+            width: 10rem;
+            height: 10rem;
+
+            .singleImgPreview {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
