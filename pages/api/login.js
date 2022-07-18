@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 export default async function handler(req, res) {
     try {
         const { username, password } = req.body;
-        console.log(username)
         await connectMongo();
         const user = await User.findOne({ username: username })
         if (!user) throw new Error('Could not find user')
