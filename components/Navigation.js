@@ -19,7 +19,7 @@ const Navigation = () => {
   }
 
   return (
-        <nav className={navStyles.container}>
+        <nav className={ `${navStyles.container} ${router.pathname === '/tagCollection/[tagName]/[photoKey]' ? navStyles.dark : null}`}>
             <div className={ `${navStyles.navChunk} ${navStyles.leftNav}` }>
                 <h1 onClick={() => router.push('/')} className={navStyles.appTitle}>Memory Bank</h1>
             </div>

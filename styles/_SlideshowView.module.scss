@@ -27,7 +27,7 @@
         margin: auto 0;
         z-index: 100;
         opacity: 0;
-        transition: opacity ease-out 0.15s;
+        transition: opacity ease-out 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -39,6 +39,7 @@
 
         h1 {
             font-weight: 800;
+            user-select: none;
         }
     }
 

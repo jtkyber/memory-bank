@@ -7,21 +7,28 @@
     align-items: center;
     padding: 0 2rem;
 
+    &.dark {
+        background-color: rgba($color: #000000, $alpha: 1.0);
+        border-bottom: 2px solid rgba($color: #c4c4c4, $alpha: 1.0);
+        color: rgba($color: #ffffff, $alpha: 1.0);
+    }
+
     .navChunk {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         gap: 1rem;
-    }
 
-    .leftNav {
-        justify-content: flex-start;
-        
-        .appTitle {
-            cursor: pointer;
+        &.leftNav {
+            justify-content: flex-start;
+            
+            .appTitle {
+                cursor: pointer;
+            }
+        }
+        &.rightNav {
+            justify-content: flex-end;
         }
     }
-    .rightNav {
-        justify-content: flex-end;
-    }
+
 }
