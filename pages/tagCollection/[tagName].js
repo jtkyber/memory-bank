@@ -52,7 +52,7 @@ const tagCollection = () => {
                             alt='image'
                             layout='fill'
                             objectFit='cover'
-                            quality={50}
+                            quality={20}
                             placeholder='blur'
                             blurDataURL={photo.url}
                         />

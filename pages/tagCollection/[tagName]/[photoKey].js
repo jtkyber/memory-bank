@@ -20,8 +20,33 @@ const slideshowView = () => {
         }
     }, [userID, router])
 
+    const goToPrevImg = () => {
+        photos?.forEach((photo, i) => {
+            if (photo.key === photoKey) {
+                const cuttoffIndex = router.asPath.lastIndexOf('/');
+                const newPath = router.asPath.slice(0, cuttoffIndex)
+                const newIndex = (i === 0) ? (photos.length - 1) : i - 1;
+                router.replace(`${newPath}/${photos[newIndex].key}`)
+            }
+        });
+    }
+
+    const goToNextImg = () => {
+        photos?.forEach((photo, i) => {
+            if (photo.key === photoKey) {
+                const cuttoffIndex = router.asPath.lastIndexOf('/');
+                const newPath = router.asPath.slice(0, cuttoffIndex)
+                const newIndex = (i === (photos.length - 1)) ? 0 : i + 1;
+                router.replace(`${newPath}/${photos[newIndex].key}`)
+            }
+        });
+    }
+
     return (
         <div className={slideStyle.container}>
+            <div onClick={goToPrevImg} className={`${slideStyle.imgBtn} ${slideStyle.prevImgBtn}`}>
+                <h1>{'<'}</h1>
+            </div>
             <div key={photoKey} className={slideStyle.photoContainer}>
                 {
                     url?.length ?
@@ -36,6 +61,9 @@ const slideshowView = () => {
                     />
                     : null
                 }
+            </div>
+            <div onClick={goToNextImg} className={`${slideStyle.imgBtn} ${slideStyle.nextImgBtn}`}>
+                <h1>{'>'}</h1>
             </div>
         </div>
     );
