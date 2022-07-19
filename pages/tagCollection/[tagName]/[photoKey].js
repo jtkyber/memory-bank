@@ -43,12 +43,22 @@ const slideshowView = () => {
         });
     }
 
+    const handleExitClick = () => {
+        const cuttoffIndex = router.asPath.lastIndexOf('/');
+        const newPath = router.asPath.slice(0, cuttoffIndex);
+        router.replace(newPath)
+    }
+
     return (
         <div className={slideStyle.container}>
+            <div className={`${slideStyle.exitBtn} ${isMobile ? slideStyle.mobile : null}`}>
+                <button onClick={handleExitClick}>X</button>
+            </div>
             <div onClick={goToPrevImg} className={`
                 ${slideStyle.imgBtn} 
                 ${slideStyle.prevImgBtn} 
                 ${isMobile ? slideStyle.mobile : null}
+                ${photos.length === 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'<'}</h1>
             </div>
@@ -71,6 +81,7 @@ const slideshowView = () => {
                 ${slideStyle.imgBtn} 
                 ${slideStyle.nextImgBtn}
                 ${isMobile ? slideStyle.mobile : null}
+                ${photos.length === 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'>'}</h1>
             </div>

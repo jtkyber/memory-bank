@@ -34,10 +34,14 @@
             
             h4 {
                 position: absolute;
-                left: 50%;
+                width: 70%;
+                left: 52%;
                 top: 60%;
                 transform: translateX(-50%);
                 transition: opacity ease-out 0.15s;
+                text-align: center;
+                word-break: break-all;
+                line-height: 0.9rem;
             }
             
             svg {

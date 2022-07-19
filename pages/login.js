@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
@@ -8,6 +8,8 @@ import { setSessionStorageUser } from '../utils/sessionStorage';
 const Login = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const usernameRef = useRef();
+    const pwRef = useRef();
 
     const logInUser = async (username, password) => {
         try {
@@ -22,6 +24,11 @@ const Login = () => {
               })
             });
             const user = await res.json();
+            if (!user.id) {
+                usernameRef.current.disabled = false;
+                pwRef.current.disabled = false;
+                throw new Error('Incorrect Username or Password')
+            }
             const userObject = {
                 userID: user.id,
                 username: user.username,
@@ -37,10 +44,10 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const username = e.target.querySelector('#username').value;
-        const password = e.target.querySelector('#password').value;
+        usernameRef.current.disabled = true;
+        pwRef.current.disabled = true;
 
-        logInUser(username, password);
+        logInUser(usernameRef.current.value, pwRef.current.value);
     }
 
     return (
@@ -50,12 +57,12 @@ const Login = () => {
                     <h2>Login</h2>
                     <div>
                         <label htmlFor='username'>UserName</label>
-                        <input type='text' id='username'></input>
+                        <input ref={usernameRef} type='text' id='username'></input>
                     </div>
 
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input type='password' id='password'></input>
+                        <input ref={pwRef} type='password' id='password'></input>
                     </div>
                     <input type='submit'/>
                 </form>

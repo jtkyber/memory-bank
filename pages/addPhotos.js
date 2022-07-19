@@ -40,7 +40,7 @@ const AddPhotos = () => {
             if (!userID.length) {
                 router.push('/login');
                 return;
-            }
+            } else if (!tags.length) throw new Error('Must include at least one tag')
             const file = e.target.querySelector('#image').files[0];
             const description = e.target.querySelector('#desc').value;
             const location = e.target.querySelector('#loc').value;
@@ -87,14 +87,14 @@ const AddPhotos = () => {
                         onChange={handleImgChange}
                     />
                     <textarea rows='5' id='desc' className={addPhotosStyles.descInput}></textarea>
-                    <input required type='text' id='loc' className={addPhotosStyles.fileInput} />
+                    <input maxLength={30} required type='text' id='loc' className={addPhotosStyles.fileInput} />
                     <div className={addPhotosStyles.tagContainer}>
                         {
                             tags.map((tag, i) => (
                                 <h5 key={i}>{tag}</h5>
                             ))
                         }
-                        <input required ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
+                        <input maxLength={18} ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
                     </div>
                     <input type='submit'/>
                 </form>

@@ -7,6 +7,11 @@ const Home = () => {
   const router = useRouter();
   const allTags = useSelector(state => state.user.allTags);
 
+  const handleFolderClick = (tag) => {
+    sessionStorage.setItem('currentTag', tag)
+    router.push(`/tagCollection/${tag}`)
+  }
+
   return (
     <div className={homeStyles.container}>
       <h1>Memories</h1>
@@ -14,7 +19,7 @@ const Home = () => {
       <div className={homeStyles.tagFoldersContainer}>
         {
           allTags?.map((tag, i) => (
-            <div onClick={() => router.push(`/tagCollection/${tag}`)} key={i} className={homeStyles.singleTagFolder}>
+            <div onClick={() => handleFolderClick(tag)} key={i} className={homeStyles.singleTagFolder}>
               <FolderImg />
               <h4 className={homeStyles.folderName}>{tag}</h4>
             </div>

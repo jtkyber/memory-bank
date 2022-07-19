@@ -19,10 +19,14 @@ const tagCollection = () => {
 
     useEffect(() => {
         const storedPhotos = sessionStorage.getItem('photos')
-        if (userID && tagName) {
-            if (storedPhotos.length && !photos.length) {
+        
+        if (tagName) {
+            if (tagName !== sessionStorage.getItem('currentTag')) {
+                console.log(tagName)
+                fetchPhotos()
+            } else if (storedPhotos.length && !photos.length) {
                 dispatch(setPhotos(JSON.parse(storedPhotos)))
-            } else if (!photos.length) fetchPhotos();
+            } else if (!photos.length) fetchPhotos()
         }
     }, [userID, router])
 
@@ -35,6 +39,7 @@ const tagCollection = () => {
             photoArrayTemp.push({...img, url: `${s3Bucket}${img.key}`})
         }
         sessionStorage.setItem('photos', JSON.stringify(photoArrayTemp));
+        sessionStorage.setItem('currentTag', tagName);
         dispatch(setPhotos(photoArrayTemp))
     }
 

@@ -50,6 +50,7 @@ const MyApp = ({ Component, pageProps }) => {
     if (router.pathname !== '/tagCollection/[tagName]/[photoKey]' && router.pathname !== '/tagCollection/[tagName]') {
       dispatch(setPhotos([]))
       sessionStorage.setItem('photos', [])
+      sessionStorage.setItem('currentTag', null)
     }
   }, [router.asPath])
 
