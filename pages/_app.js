@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
 import { setSessionStorageUser } from '../utils/sessionStorage';
 import { setPhotos } from '../redux/photoSlice';
+import { setIsMobile } from '../redux/deviceSlice';
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -32,6 +33,9 @@ const MyApp = ({ Component, pageProps }) => {
         allTags: allTagsFromStorage
       }))
     } else router.push('/login')
+
+    const mobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth < window.innerHeight))
+    dispatch(setIsMobile(mobile))
   }, [])
 
   useEffect(() => {

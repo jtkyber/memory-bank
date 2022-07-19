@@ -7,9 +7,10 @@
 
     .logRegBox {
         width: 15rem;
-        height: 20rem;
+        height: max-content;
         border: 0.3rem solid rgb(0, 0, 0);
         border-radius: 1rem;
+        padding: 3rem 0rem;
 
         form {
             width: 100%;
@@ -25,7 +26,10 @@
             }
 
             div {
-                text-align: center;
+                display: flex;
+                flex-flow: column nowrap;
+                width: 100%;
+                align-items: center;
             }
         }
     }

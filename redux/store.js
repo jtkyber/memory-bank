@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import user from './userSlice';
 import photos from './photoSlice';
+import device from './deviceSlice';
 
 const rootReducer = combineReducers({
     user,
-    photos
+    photos,
+    device
 })
 
 export const makeStore = () => (

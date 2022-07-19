@@ -41,6 +41,11 @@
             font-weight: 800;
             user-select: none;
         }
+
+        &.mobile {
+            opacity: 0.3;
+            width: 2rem;
+        }
     }
 
     .prevImgBtn {

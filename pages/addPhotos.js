@@ -87,14 +87,14 @@ const AddPhotos = () => {
                         onChange={handleImgChange}
                     />
                     <textarea rows='5' id='desc' className={addPhotosStyles.descInput}></textarea>
-                    <input type='text' id='loc' className={addPhotosStyles.fileInput} />
+                    <input required type='text' id='loc' className={addPhotosStyles.fileInput} />
                     <div className={addPhotosStyles.tagContainer}>
                         {
                             tags.map((tag, i) => (
                                 <h5 key={i}>{tag}</h5>
                             ))
                         }
-                        <input ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
+                        <input required ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
                     </div>
                     <input type='submit'/>
                 </form>

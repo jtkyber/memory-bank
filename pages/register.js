@@ -47,7 +47,7 @@ const Register = () => {
         <div className={logRegStyles.container}>
             <div className={logRegStyles.logRegBox}>
                 <form onSubmit={handleSubmit}>
-                    <h3>Register</h3>
+                    <h2>Register</h2>
                     <div>
                         <label htmlFor='username'>UserName</label>
                         <input type='text' id='username'></input>

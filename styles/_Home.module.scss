@@ -23,21 +23,37 @@
         .singleTagFolder {
             width: 10rem;
             height: 8rem;
-            border: 2px solid black;
-            border-radius: 1rem;
+            // border: 2px solid black;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: background-color 0.2s ease-out;
             cursor: pointer;
+            position: relative;
 
-            &:hover {
-                background-color: rgba($color: #000000, $alpha: 1.0);
-                h3 {
-                    color: white;
-                }
+            
+            h4 {
+                position: absolute;
+                left: 50%;
+                top: 60%;
+                transform: translateX(-50%);
+                transition: opacity ease-out 0.15s;
+            }
+            
+            svg {
+                width: 100%;
+                height: auto;
+                transition: fill ease-out 0.15s;
             }
 
+            &:hover {
+                svg {
+                    fill: rgba($color: #000000, $alpha: 0.5);
+                }
+                h4 {
+                    opacity: 0.5;
+                }
+            }
         }
     }
 }

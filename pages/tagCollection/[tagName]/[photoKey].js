@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from 'next/image';
-import slideStyle from '../../../styles/_SlideshowView.module.scss'
 import { setUrl } from '../../../redux/photoSlice';
+import Image from 'next/image';
+import slideStyle from '../../../styles/_SlideView.module.scss'
 
 const slideshowView = () => {
     const router = useRouter();
-    const { tagName, photoKey } = router.query;
+    const { photoKey } = router.query;
     const userID = useSelector(state => state.user.userID);
     const photos = useSelector(state => state.photos.photos);
     const url = useSelector(state => state.photos.url);
+    const isMobile = useSelector(state => state.device.isMobile);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -44,7 +45,11 @@ const slideshowView = () => {
 
     return (
         <div className={slideStyle.container}>
-            <div onClick={goToPrevImg} className={`${slideStyle.imgBtn} ${slideStyle.prevImgBtn}`}>
+            <div onClick={goToPrevImg} className={`
+                ${slideStyle.imgBtn} 
+                ${slideStyle.prevImgBtn} 
+                ${isMobile ? slideStyle.mobile : null}
+            `}>
                 <h1>{'<'}</h1>
             </div>
             <div key={photoKey} className={slideStyle.photoContainer}>
@@ -62,7 +67,11 @@ const slideshowView = () => {
                     : null
                 }
             </div>
-            <div onClick={goToNextImg} className={`${slideStyle.imgBtn} ${slideStyle.nextImgBtn}`}>
+            <div onClick={goToNextImg} className={`
+                ${slideStyle.imgBtn} 
+                ${slideStyle.nextImgBtn}
+                ${isMobile ? slideStyle.mobile : null}
+            `}>
                 <h1>{'>'}</h1>
             </div>
         </div>

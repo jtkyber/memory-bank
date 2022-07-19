@@ -1,17 +1,11 @@
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { setPhotos, addTag, resetTags } from '../redux/photoSlice';
+import { useSelector } from 'react-redux';
 import homeStyles from '../styles/_Home.module.scss'
+import FolderImg from '../components/FolderImg';
 
 const Home = () => {
   const router = useRouter();
-  const userID = useSelector(state => state.user.userID);
   const allTags = useSelector(state => state.user.allTags);
-
-  useEffect(() => {
-    
-  }, [])
 
   return (
     <div className={homeStyles.container}>
@@ -21,7 +15,8 @@ const Home = () => {
         {
           allTags?.map((tag, i) => (
             <div onClick={() => router.push(`/tagCollection/${tag}`)} key={i} className={homeStyles.singleTagFolder}>
-              <h3 className={homeStyles.folderName}>{tag}</h3>
+              <FolderImg />
+              <h4 className={homeStyles.folderName}>{tag}</h4>
             </div>
           ))
         }

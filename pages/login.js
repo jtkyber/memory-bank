@@ -47,7 +47,7 @@ const Login = () => {
         <div className={logRegStyles.container}>
             <div className={logRegStyles.logRegBox}>
                 <form onSubmit={handleSubmit}>
-                    <h3>Login</h3>
+                    <h2>Login</h2>
                     <div>
                         <label htmlFor='username'>UserName</label>
                         <input type='text' id='username'></input>
