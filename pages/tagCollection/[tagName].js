@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPhotos } from '../../redux/photoSlice';
@@ -10,7 +10,7 @@ const tagCollection = () => {
     const dispatch = useDispatch()
     const router = useRouter();
     const tagName = router.query.tagName;
-    
+
     const userID = useSelector(state => state.user.userID);
     const photos = useSelector(state => state.photos.photos);
 
@@ -47,6 +47,15 @@ const tagCollection = () => {
         router.push(`${router.asPath}/${photo.key}`)
     }
 
+    const onImgLoad = (e, i) => {
+        if (e.target.complete && e.target.naturalWidth > 1) {
+            console.log('Loaded')
+            const loadingText = e.target.parentElement.parentElement.querySelector(`.${tagCollectionStyles.loading}`);
+            console.log(loadingText)
+            loadingText.classList.add(`${tagCollectionStyles.hide}`)
+        }
+    }
+
     return (
         <div className={tagCollectionStyles.container}>
             {
@@ -57,12 +66,14 @@ const tagCollection = () => {
                             alt='image'
                             layout='fill'
                             objectFit='cover'
-                            quality={20}
+                            quality={40}
                             placeholder='blur'
                             blurDataURL={photo.url}
+                            onLoad={(e) => onImgLoad(e, i)}
                         />
 
                         <h3 className={tagCollectionStyles.location}>{photo.location}</h3>
+                        <h3 className={tagCollectionStyles.loading}>Loading...</h3>
                     </div>
                 ))
             }
