@@ -49,9 +49,7 @@ const tagCollection = () => {
 
     const onImgLoad = (e, i) => {
         if (e.target.complete && e.target.naturalWidth > 1) {
-            console.log('Loaded')
             const loadingText = e.target.parentElement.parentElement.querySelector(`.${tagCollectionStyles.loading}`);
-            console.log(loadingText)
             loadingText.classList.add(`${tagCollectionStyles.hide}`)
         }
     }

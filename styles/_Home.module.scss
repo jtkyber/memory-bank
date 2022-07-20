@@ -10,7 +10,6 @@
 
     h1 {
         font-weight: 600;
-        text-transform: uppercase;
     }
 
     .tagFoldersContainer {
@@ -41,7 +40,8 @@
                 transition: opacity ease-out 0.15s;
                 text-align: center;
                 word-break: break-all;
-                line-height: 0.9rem;
+                line-height: 1rem;
+                font-size: 0.9rem;
             }
             
             svg {
