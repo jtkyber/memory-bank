@@ -58,7 +58,7 @@ const slideshowView = () => {
                 ${slideStyle.imgBtn} 
                 ${slideStyle.prevImgBtn} 
                 ${isMobile ? slideStyle.mobile : null}
-                ${photos.length === 1 ? slideStyle.hide : null}
+                ${photos.length <= 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'<'}</h1>
             </div>
@@ -81,7 +81,7 @@ const slideshowView = () => {
                 ${slideStyle.imgBtn} 
                 ${slideStyle.nextImgBtn}
                 ${isMobile ? slideStyle.mobile : null}
-                ${photos.length === 1 ? slideStyle.hide : null}
+                ${photos.length <= 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'>'}</h1>
             </div>
