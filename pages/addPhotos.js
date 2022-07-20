@@ -27,7 +27,7 @@ const AddPhotos = () => {
     }, [])
     
     const handleCommaPress = (e) => {
-        if (e.keyCode !== 188) return;
+        if (e.key !== ',') return;
         const currentTag = tagInputRef.current.value;
         currentTag = currentTag.split(',')[0];
         dispatch(addTag(currentTag));
