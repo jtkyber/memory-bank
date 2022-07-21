@@ -19,15 +19,15 @@ const AddPhotos = () => {
     const tagInputRef = useRef();
 
     useEffect(() => {
-        tagInputRef.current.addEventListener('keyup', handleCommaPress);
+        tagInputRef.current.addEventListener('input', handleCommaPress);
 
         return () => {
-            tagInputRef?.current?.removeEventListener('keyup', handleCommaPress);
+            tagInputRef?.current?.removeEventListener('input', handleCommaPress);
         }
     }, [])
     
     const handleCommaPress = (e) => {
-        if (e.key !== ',') return;
+        if (e.data !== ',' || e.inputType !== 'insertText') return;
         const currentTag = tagInputRef.current.value.split(',')[0];
 
         const hasEndDashes = currentTag[0] === '-' || currentTag[currentTag.length-1] === '-';
