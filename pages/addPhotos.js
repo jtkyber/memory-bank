@@ -28,8 +28,17 @@ const AddPhotos = () => {
     
     const handleCommaPress = (e) => {
         if (e.key !== ',') return;
-        const currentTag = tagInputRef.current.value;
-        currentTag = currentTag.split(',')[0];
+        const currentTag = tagInputRef.current.value.split(',')[0];
+
+        const hasEndDashes = currentTag[0] === '-' || currentTag[currentTag.length-1] === '-';
+        let tagWithoutDashes = currentTag;
+        if (!hasEndDashes) tagWithoutDashes = currentTag.replace('-', '');
+
+        const regex1 = /^[a-zA-Z]+$/;
+        if (!tagWithoutDashes.match(regex1)) {
+            return console.log('Tags must only contain letters and dashes')
+        }
+        
         dispatch(addTag(currentTag));
         tagInputRef.current.value = ''; 
     }
@@ -85,6 +94,7 @@ const AddPhotos = () => {
                         accept='image/*'
                         className={addPhotosStyles.fileInput}
                         onChange={handleImgChange}
+                        required
                     />
                     <textarea rows='5' id='desc' className={addPhotosStyles.descInput}></textarea>
                     <input maxLength={30} required type='text' id='loc' className={addPhotosStyles.fileInput} />

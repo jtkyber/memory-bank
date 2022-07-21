@@ -9,7 +9,7 @@
 
     .exitBtn {
         position: absolute;
-        right: 0;
+        left: 0;
         top: 0;
         width: 10rem;
         height: 10rem;
@@ -19,7 +19,7 @@
         z-index: 100;
         transition: opacity ease-out 0.2s;
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: flex-start;
 
         &.mobile {
