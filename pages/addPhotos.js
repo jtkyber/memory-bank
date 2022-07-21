@@ -19,23 +19,20 @@ const AddPhotos = () => {
     const tagInputRef = useRef();
 
     useEffect(() => {
-        tagInputRef.current.addEventListener('input', handleCommaPress);
+        tagInputRef.current.addEventListener('keyup', handleCommaPress);
 
         return () => {
-            tagInputRef?.current?.removeEventListener('input', handleCommaPress);
+            tagInputRef?.current?.removeEventListener('keyup', handleCommaPress);
         }
     }, [])
     
     const handleCommaPress = (e) => {
-        if (e.data !== ',' || e.inputType !== 'insertText') return;
+        if (e.code !== 'Comma') return;
         const currentTag = tagInputRef.current.value.split(',')[0];
+        if (currentTag[0] === '-' || currentTag[currentTag.length-1] === '-') return;
 
-        const hasEndDashes = currentTag[0] === '-' || currentTag[currentTag.length-1] === '-';
-        let tagWithoutDashes = currentTag;
-        if (!hasEndDashes) tagWithoutDashes = currentTag.replace('-', '');
-
-        const regex1 = /^[a-zA-Z]+$/;
-        if (!tagWithoutDashes.match(regex1)) {
+        const regex = /^[a-zA-Z0-9-]+$/;
+        if (!currentTag.match(regex)) {
             return console.log('Tags must only contain letters and dashes')
         }
         
