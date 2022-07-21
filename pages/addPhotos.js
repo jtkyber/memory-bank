@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPhotos, addTag, resetTags } from '../redux/photoSlice';
+import { setPhotos, addTag, resetTags, removeTag } from '../redux/photoSlice';
 import addPhotosStyles from '../styles/_AddPhotos.module.scss'
 import { setAllTags } from '../redux/userSlice';
 import { setSessionStorageUser } from '../utils/sessionStorage';
@@ -25,9 +25,16 @@ const AddPhotos = () => {
             tagInputRef?.current?.removeEventListener('input', handleCommaPress);
         }
     }, [])
+
+    useEffect(() => {
+        if (tags.length >= 5) {
+            tagInputRef.current.disabled = true
+        } else if (tagInputRef.current.disabled) {
+            tagInputRef.current.disabled = false
+        }
+    }, [tags])
     
     const handleCommaPress = (e) => {
-        console.log(e?.data, e?.data?.[e.data.length-1], e.inputType)
         if (e?.data?.[e.data.length-1] !== ',') return;
         const currentTag = tagInputRef.current.value.split(',')[0];
         if (currentTag[0] === '-' || currentTag[currentTag.length-1] === '-') return;
@@ -99,7 +106,10 @@ const AddPhotos = () => {
                     <div className={addPhotosStyles.tagContainer}>
                         {
                             tags.map((tag, i) => (
-                                <h5 key={i}>{tag}</h5>
+                                <div key={i} className={addPhotosStyles.singleTag}>
+                                    <h5>{tag}</h5>
+                                    <h3 onClick={() => dispatch(removeTag(i))}>x</h3>
+                                </div>
                             ))
                         }
                         <input maxLength={18} ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>

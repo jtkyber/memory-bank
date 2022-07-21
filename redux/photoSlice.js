@@ -16,6 +16,9 @@ export const photoSlice = createSlice({
         addTag: (state, action) => {
             state.tags.push(action.payload)
         },
+        removeTag: (state, action) => {
+            state.tags.splice(action.payload, 1)
+        },
         resetTags: (state) => {
             state.tags = []
         },
@@ -25,6 +28,6 @@ export const photoSlice = createSlice({
     }
 })
 
-export const { setPhotos, addTag, resetTags, setUrl } = photoSlice.actions
+export const { setPhotos, addTag, removeTag, resetTags, setUrl } = photoSlice.actions
 
 export default photoSlice.reducer;
