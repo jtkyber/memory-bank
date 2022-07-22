@@ -12,6 +12,23 @@ const s3 = new S3({
     secretAccessKey
 })
 
+// creates presigned POST
+
+export const createPresignedPost = async (filename, filetype) => {
+    const post = await s3.createPresignedPost({
+        Bucket: bucketName,
+        Fields: {
+            key: filename,
+            'Content-Type': filetype,
+        },
+        Expires: 60,
+        Conditions: [
+            ['content-length-range', 0, 20000000]
+        ]
+    })
+    return post;
+}
+
 // uploads a file to s3
 
 export const uploadFile = (file) => {

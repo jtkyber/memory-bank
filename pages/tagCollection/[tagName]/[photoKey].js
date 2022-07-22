@@ -15,7 +15,6 @@ const slideshowView = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(photoKey)
         if (photoKey?.length) {
             const tempUrl = `https://memory-bank-bucket.s3.amazonaws.com/${photoKey}`
             dispatch(setUrl(tempUrl))

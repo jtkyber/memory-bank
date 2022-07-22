@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPhotos, addTag, resetTags, removeTag } from '../redux/photoSlice';
@@ -39,7 +38,7 @@ const AddPhotos = () => {
         const currentTag = tagInputRef.current.value.split(',')[0];
         if (currentTag[0] === '-' || currentTag[currentTag.length-1] === '-') return;
 
-        const regex = /^[a-zA-Z0-9-]+$/;
+        const regex = /^[a-zA-Z0-9- ]+$/;
         if (!currentTag.match(regex)) {
             return console.log('Tags must only contain letters and dashes')
         }
@@ -48,36 +47,89 @@ const AddPhotos = () => {
         tagInputRef.current.value = ''; 
     }
 
-    const uploadImg = async (e) => {
-        e.preventDefault();
+    const uploadImgToDB = async (filename, e) => {
         try {
-            if (!userID.length) {
-                router.push('/login');
-                return;
-            } else if (!tags.length) throw new Error('Must include at least one tag')
-            const file = e.target.querySelector('#image').files[0];
             const description = e.target.querySelector('#desc').value;
             const location = e.target.querySelector('#loc').value;
-            
-            const formData = new FormData();
-            formData.append('image', file);
-            formData.append('description', description);
-            formData.append('location', location);
-            formData.append('tags', tags);
-            formData.append('id', userID);
 
-            const res = await axios.post('/api/uploadImg', formData, {
+            const formData = {
+                description: description,
+                location: location,
+                tags: tags,
+                id: userID,
+                key: filename
+            }
+
+            const res = await fetch('/api/uploadImg', {
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             })
-            sessionStorage.setItem('allTags', res.data.split(','));
-            dispatch(setAllTags(res.data.split(',')));
+            const newTagList = await res.json()
+            sessionStorage.setItem('allTags', newTagList.split(','));
+            dispatch(setAllTags(newTagList.split(',')));
             dispatch(resetTags());
             dispatch(setPhotos([]));
             e.target.reset();
         } catch (err) {
             console.log(err)
+        }
+    }
+
+    const createRandFilename = () => {
+        const length = 32;
+        const result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+
+        for ( const i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    const uploadImgToS3 = async (e) => {
+        e.preventDefault();
+        try {
+            e.target.querySelector('#submit').disabled = true
+            if (!userID.length) {
+                router.push('/login');
+                return;
+            } else if (!tags.length) throw new Error('Must include at least one tag')
+
+            const file = e.target.querySelector('#image')?.files[0]
+            Object.defineProperty(file, 'name', {
+                writable: true,
+                value: createRandFilename()
+            })
+
+            const filename = encodeURIComponent(file.name);
+            const filetype = encodeURIComponent(file.type);
+            
+            const res = await fetch(`/api/uploadImg?filename=${filename}&filetype=${filetype}`)
+            const { url, fields } = await res.json();
+            const formData = new FormData();
+
+            Object.entries({ ...fields, file }).forEach(([key, value]) => {
+                formData.append(key, value)
+            })
+
+            const upload = await fetch(url, {
+                method: 'POST',
+                body: formData,
+            })
+
+            if (upload.ok) {
+                uploadImgToDB(file.name, e);
+            } else {
+                console.error('Upload failed.')
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            e.target.querySelector('#submit').disabled = false
         }
     }
 
@@ -91,7 +143,7 @@ const AddPhotos = () => {
         <div className={addPhotosStyles.container}>
             <div className={addPhotosStyles.formContainer}>
                 <h1>Add Photos</h1>
-                <form onSubmit={uploadImg}>
+                <form onSubmit={uploadImgToS3}>
                     <input
                         type='file'
                         name='image'
@@ -114,7 +166,7 @@ const AddPhotos = () => {
                         }
                         <input maxLength={18} ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
                     </div>
-                    <input type='submit'/>
+                    <input id='submit' type='submit'/>
                 </form>
             </div>
 

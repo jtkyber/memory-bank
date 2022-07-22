@@ -22,7 +22,6 @@ const tagCollection = () => {
         
         if (tagName) {
             if (tagName !== sessionStorage.getItem('currentTag')) {
-                console.log(tagName)
                 fetchPhotos()
             } else if (storedPhotos.length && !photos.length) {
                 dispatch(setPhotos(JSON.parse(storedPhotos)))
