@@ -172,7 +172,7 @@ const AddPhotos = () => {
 
             <div className={addPhotosStyles.previewContainer}>
                 {
-                    photos.map((photo, i) => (
+                    photos?.map((photo, i) => (
                         <div key={i} className={addPhotosStyles.singleImgPreviewContainer}>
                             <img src={photo} className={addPhotosStyles.singleImgPreview}></img>
                         </div>

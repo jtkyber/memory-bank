@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPhotos } from '../../redux/photoSlice';
-import { setUser } from '../../redux/userSlice';
+// import { setUser } from '../../redux/userSlice';
 import tagCollectionStyles from '../../styles/_TagCollection.module.scss'
 import Image from 'next/image';
 
@@ -19,15 +19,15 @@ const tagCollection = () => {
 
     useEffect(() => {
         const storedPhotos = sessionStorage.getItem('photos')
-        
+        console.log('test')
         if (tagName) {
             if (tagName !== sessionStorage.getItem('currentTag')) {
                 fetchPhotos()
-            } else if (storedPhotos.length && !photos.length) {
+            } else if (storedPhotos?.length && !photos?.length) {
                 dispatch(setPhotos(JSON.parse(storedPhotos)))
-            } else if (!photos.length) fetchPhotos()
+            } else if (!photos?.length) fetchPhotos()
         }
-    }, [userID, router])
+    }, [router])
 
     const fetchPhotos = async () => {
         const res = await fetch(`/api/getPhotosByTag?userID=${userID}&tag=${tagName}`)
