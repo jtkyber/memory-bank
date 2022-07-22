@@ -1,10 +1,11 @@
 import connectMongo from '../../utils/connectDB';
 import User from '../../models/userModel';
-import { getFileStream } from '../../s3';
+// import { getFileStream } from '../../s3';
 
 export default async function handler(req, res) {
     try {
         const { userID, tag } = req.query
+        console.log(tag)
         await connectMongo()
 
         const photosResult = await User.findOne({ _id: userID }).select('photos')

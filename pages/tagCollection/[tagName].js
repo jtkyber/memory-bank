@@ -19,7 +19,7 @@ const tagCollection = () => {
 
     useEffect(() => {
         const storedPhotos = sessionStorage.getItem('photos')
-        console.log('test')
+        console.log(tagName)
         if (tagName) {
             if (tagName !== sessionStorage.getItem('currentTag')) {
                 fetchPhotos()
@@ -30,7 +30,7 @@ const tagCollection = () => {
     }, [router])
 
     const fetchPhotos = async () => {
-        const res = await fetch(`/api/getPhotosByTag?userID=${userID}&tag=${tagName}`)
+        const res = await fetch(`/api/getPhotosByTag?userID=${userID}&tag=${encodeURIComponent(tagName)}`)
         const photosRes = await res.json()
 
         const photoArrayTemp = [];

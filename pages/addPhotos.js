@@ -36,9 +36,10 @@ const AddPhotos = () => {
     const handleCommaPress = (e) => {
         if (e?.data?.[e.data.length-1] !== ',') return;
         const currentTag = tagInputRef.current.value.split(',')[0];
-        if (currentTag[0] === '-' || currentTag[currentTag.length-1] === '-') return;
+        const endCharsNotAccepted = ['&','-'];
+        if (endCharsNotAccepted.includes(currentTag[0]) || endCharsNotAccepted.includes(currentTag[currentTag.length-1])) return;
 
-        const regex = /^[a-zA-Z0-9- ]+$/;
+        const regex = /^[a-zA-Z0-9-& ]+$/;
         if (!currentTag.match(regex)) {
             return console.log('Tags must only contain letters and dashes')
         }
