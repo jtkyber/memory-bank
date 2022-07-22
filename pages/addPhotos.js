@@ -131,4 +131,5 @@ const AddPhotos = () => {
     );
 };
 
+
 export default AddPhotos;
