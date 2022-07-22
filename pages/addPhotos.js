@@ -6,6 +6,8 @@ import { setPhotos, addTag, resetTags, removeTag } from '../redux/photoSlice';
 import addPhotosStyles from '../styles/_AddPhotos.module.scss'
 import { setAllTags } from '../redux/userSlice';
 import { setSessionStorageUser } from '../utils/sessionStorage';
+import { uploadFile } from '../s3';
+// import S3FileUpload from 'react-s3/lib/ReactS3';
 
 const AddPhotos = () => {
     const router = useRouter();
@@ -48,39 +50,69 @@ const AddPhotos = () => {
         tagInputRef.current.value = ''; 
     }
 
-    const uploadImg = async (e) => {
-        e.preventDefault();
+    const uploadImgToDB = async (form, filename) => {
         try {
-            if (!userID.length) {
-                router.push('/login');
-                return;
-            } else if (!tags.length) throw new Error('Must include at least one tag')
-            const file = e.target.querySelector('#image').files[0];
-            const description = e.target.querySelector('#desc').value;
-            const location = e.target.querySelector('#loc').value;
+            const description = form.querySelector('#desc').value;
+            const location = form.querySelector('#loc').value;
             
-            const formData = new FormData();
-            formData.append('image', file);
-            formData.append('description', description);
-            formData.append('location', location);
-            formData.append('tags', tags);
-            formData.append('id', userID);
+            const formData = {
+                description: description,
+                location: location,
+                tags: tags,
+                id: userID,
+                filename: filename
+            }
+            // formData.append('description', description);
+            // formData.append('location', location);
+            // formData.append('tags', tags);
+            // formData.append('id', userID);
 
-            const res = await axios.post('/api/uploadImg', formData, {
+            const data = await axios.post('/api/uploadImg', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                  'Content-Type': 'application/json'
                 }
-            })
-            sessionStorage.setItem('allTags', res.data.split(','));
-            dispatch(setAllTags(res.data.split(',')));
-            dispatch(resetTags());
-            dispatch(setPhotos([]));
-            e.target.reset();
+              });
+            //   const data = await res.json()
+              console.log(data)
+            // sessionStorage.setItem('allTags', res.data.split(','));
+            // dispatch(setAllTags(res.data.split(',')));
+            // dispatch(resetTags());
+            // dispatch(setPhotos([]));
+            // e.target.reset();
         } catch (err) {
             console.log(err)
         }
     }
 
+    // const generateKey = () => {
+    //     const length = 32;
+    //     const result = '';
+    //     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //     const charactersLength = characters.length;
+
+    //     for ( const i = 0; i < length; i++ ) {
+    //         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    //     }
+
+    //    return result;
+    // }
+
+    const uploadImgToS3 = async (e) => {
+        e.preventDefault();
+        try {
+            if (!userID.length) {
+                router.push('/login');
+                return;
+            }
+
+            const file = e.target.querySelector('#image').files[0];
+            // const key = generateKey();
+            await uploadFile(file);
+            // uploadImgToDB(e.target, file.filename);
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const handleImgChange = (e) => {
         const file = URL.createObjectURL(e.target.files[0]);
@@ -91,7 +123,7 @@ const AddPhotos = () => {
         <div className={addPhotosStyles.container}>
             <div className={addPhotosStyles.formContainer}>
                 <h1>Add Photos</h1>
-                <form onSubmit={uploadImg}>
+                <form onSubmit={uploadImgToS3}>
                     <input
                         type='file'
                         name='image'
