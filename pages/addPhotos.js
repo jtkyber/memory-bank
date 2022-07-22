@@ -5,14 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPhotos, addTag, resetTags, removeTag } from '../redux/photoSlice';
 import addPhotosStyles from '../styles/_AddPhotos.module.scss'
 import { setAllTags } from '../redux/userSlice';
-import { setSessionStorageUser } from '../utils/sessionStorage';
+// import { setSessionStorageUser } from '../utils/sessionStorage';
 
 const AddPhotos = () => {
     const router = useRouter();
 
     const dispatch = useDispatch();
     const userID = useSelector(state => state.user.userID);
-    const allTags = useSelector(state => state.user.allTags);
+    // const allTags = useSelector(state => state.user.allTags);
     const photos = useSelector(state => state.photos.photos);
     const tags = useSelector(state => state.photos.tags);
 

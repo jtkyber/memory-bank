@@ -18,6 +18,7 @@ router
 .use(upload.single('image'))
 .post(async (req, res) => {
   try {
+    console.log(req.body)
     await connectMongo();
 
     const file = req.file;
