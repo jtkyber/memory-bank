@@ -6,15 +6,15 @@ const initialState = {
     allTags: []
 }
 
-const setTags = (tags) => {
-    if (tags?.length > 1) {
-        return tags.split(',')
-    } else if (tags?.length === 1) {
-        return [tags]
-    } else {
-        return []
-    }
-}
+// const setTags = (tags) => {
+//     if (tags?.length > 1) {
+//         return tags.split(',')
+//     } else if (tags?.length === 1) {
+//         return [tags]
+//     } else {
+//         return []
+//     }
+// }
 
 export const userSlice = createSlice({
     name: 'user',
@@ -23,10 +23,10 @@ export const userSlice = createSlice({
         setUser: (state, action) => {
             state.userID = action.payload.userID
             state.username = action.payload.username
-            state.allTags = setTags(action.payload.allTags)
+            state.allTags = action.payload.allTags
         },
         setAllTags: (state, action) => {
-            state.allTags = action.payload;
+            state.allTags = action.payload
         }
     }
 })

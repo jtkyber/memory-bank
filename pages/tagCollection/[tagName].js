@@ -19,7 +19,6 @@ const tagCollection = () => {
 
     useEffect(() => {
         const storedPhotos = sessionStorage.getItem('photos')
-        console.log(tagName)
         if (tagName) {
             if (tagName !== sessionStorage.getItem('currentTag')) {
                 fetchPhotos()

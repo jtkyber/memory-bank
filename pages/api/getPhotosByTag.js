@@ -5,7 +5,6 @@ import User from '../../models/userModel';
 export default async function handler(req, res) {
     try {
         const { userID, tag } = req.query
-        console.log(tag)
         await connectMongo()
 
         const photosResult = await User.findOne({ _id: userID }).select('photos')
@@ -13,7 +12,7 @@ export default async function handler(req, res) {
 
         if (!allPhotos) throw new Error('No photos found')
 
-        const filteredPhotos = allPhotos.filter(photo => photo.tags.split(',').includes(tag))
+        const filteredPhotos = allPhotos.filter(photo => photo.tags.includes(tag))
         res.json(filteredPhotos)
     } catch(err) {
         console.log(err)

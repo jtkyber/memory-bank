@@ -1,14 +1,37 @@
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAllTags } from '../redux/userSlice';
 import homeStyles from '../styles/_Home.module.scss'
 import FolderImg from '../components/FolderImg';
 
 const Home = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const allTags = useSelector(state => state.user.allTags);
+  const userID = useSelector(state => state.user.userID);
+
+  const updateTagWeight = async (tag) => {
+    const res = await fetch('/api/updateTagWeight', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID: userID,
+        tagName: tag
+      })
+    })
+
+    const newTagList = await res.json()
+    sessionStorage.setItem('allTags', JSON.stringify(newTagList))
+    dispatch(setAllTags(newTagList))
+  }
 
   const handleFolderClick = (tag) => {
     sessionStorage.setItem('currentTag', tag)
+
+    updateTagWeight(tag)
+
     router.push(`/tagCollection/${tag}`)
   }
 
@@ -19,9 +42,9 @@ const Home = () => {
       <div className={homeStyles.tagFoldersContainer}>
         {
           allTags?.map((tag, i) => (
-            <div onClick={() => handleFolderClick(tag)} key={i} className={homeStyles.singleTagFolder}>
+            <div onClick={() => handleFolderClick(tag[0])} key={i} className={homeStyles.singleTagFolder}>
               <FolderImg />
-              <h4 className={homeStyles.folderName}>{tag}</h4>
+              <h4 className={homeStyles.folderName}>{tag[0]}</h4>
             </div>
           ))
         }

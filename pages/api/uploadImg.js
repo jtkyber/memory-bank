@@ -32,25 +32,32 @@ router
     
     const photo = {
       key: key,
-      tags: tags.join(','),
+      tags: tags,
       description: description,
       location: location
     }
     
     await User.updateOne( { _id: id }, { $push: { photos: photo }})
 
-    // const tagArray = tags.length >= 2 ? tags.split(',') : [tags];
-
     let allTags = await User.findOne({ _id: id }).select({ allTags: 1, _id: 0 });
     allTags = allTags?.allTags;
 
-    let newTagList = '';
+    const currentTags = tags.map(tag => {
+      return [tag, 0]
+    });
+
+    let newTagList = [];
 
     if (allTags?.length) {
-      const existingTagArray = allTags.length >= 2 ? allTags.split(',') : [allTags]; 
-      const newTagArray = tags.filter(tag => !existingTagArray.includes(tag))
-      newTagList = existingTagArray.concat(newTagArray).join(',');
-    } else newTagList = tags.join(',')
+      const newTags = currentTags.filter(tag => {
+        for (let existingTag of allTags) {
+          if (existingTag[0] === tag[0]) return
+        }
+        return tag
+      })
+
+      newTagList = allTags.concat(newTags);
+    } else newTagList = currentTags
     
     await User.updateOne( { _id: id }, { allTags: newTagList })
 

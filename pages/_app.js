@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     const userIDFromStorage = sessionStorage.getItem('userID')
     const usernameFromStorage = sessionStorage.getItem('username')
-    const allTagsFromStorage = sessionStorage.getItem('allTags')
+    const allTagsFromStorage = JSON?.parse(sessionStorage.getItem('allTags'))
 
     if (router.asPath === '/login' || router.asPath === '/register') {
       setSessionStorageUser({
