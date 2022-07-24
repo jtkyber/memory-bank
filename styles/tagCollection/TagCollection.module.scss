@@ -5,8 +5,9 @@
     align-content: flex-start;
     gap: 3rem;
     width: 100%;
-    height: 100%;
-    padding-top: 2rem;
+    height: max-content;
+    padding-top: 3rem;
+    padding-bottom: 30vh;
 
     .singleImg {
         width: 20rem;
