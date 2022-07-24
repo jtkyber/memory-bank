@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPhotos, addTag, resetTags, removeTag } from '../redux/photoSlice';
-import addPhotosStyles from '../styles/_AddPhotos.module.scss'
+import addPhotosStyles from '../styles/addPhotos/AddPhotos.module.scss'
 import { setAllTags } from '../redux/userSlice';
 // import { setSessionStorageUser } from '../utils/sessionStorage';
 
@@ -157,9 +157,12 @@ const AddPhotos = () => {
                         onChange={handleImgChange}
                         required
                     />
+                    <label htmlFor='desc'>Description</label>
                     <textarea rows='5' id='desc' className={addPhotosStyles.descInput}></textarea>
-                    <input maxLength={30} required type='text' id='loc' className={addPhotosStyles.fileInput} />
-                    <div className={addPhotosStyles.tagContainer}>
+                    <label htmlFor='loc'>Location</label>
+                    <input maxLength={30} required type='text' id='loc' className={addPhotosStyles.locationInput} />
+                    <label htmlFor='tags'>Tags</label>
+                    <div id='tags' className={addPhotosStyles.tagContainer}>
                         {
                             tags.map((tag, i) => (
                                 <div key={i} className={addPhotosStyles.singleTag}>
@@ -170,7 +173,7 @@ const AddPhotos = () => {
                         }
                         <input maxLength={18} ref={tagInputRef} type='text' className={addPhotosStyles.tagInput}/>
                     </div>
-                    <input id='submit' type='submit'/>
+                    <input className={addPhotosStyles.submitBtn} id='submit' type='submit'/>
                 </form>
             </div>
 

@@ -16,7 +16,8 @@ export default async function handler(req, res) {
                 res.json({
                     id: newUser._id,
                     username: newUser.username,
-                    allTags: newUser.allTags
+                    allTags: newUser.allTags,
+                    bgImage: user.bgImage
                 });
             })
         })

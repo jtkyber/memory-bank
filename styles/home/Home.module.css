@@ -1,0 +1,92 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  padding-top: 2rem;
+}
+
+.container h1 {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.container .tagFoldersContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+}
+
+.container .tagFoldersContainer .singleTagFolder {
+  width: 14rem;
+  height: 12rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  position: relative;
+}
+
+.container .tagFoldersContainer .singleTagFolder h4 {
+  position: absolute;
+  width: 70%;
+  left: 52%;
+  top: 60%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: opacity ease-out 0.15s;
+  transition: opacity ease-out 0.15s;
+  text-align: center;
+  word-break: break-all;
+  line-height: 1rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.container .tagFoldersContainer .singleTagFolder svg {
+  width: 100%;
+  height: auto;
+  -webkit-transition: fill ease-out 0.15s;
+  transition: fill ease-out 0.15s;
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.container .tagFoldersContainer .singleTagFolder:hover svg {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.container .tagFoldersContainer .singleTagFolder:hover h4 {
+  opacity: 0.5;
+}
+/*# sourceMappingURL=Home.module.css.map */

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
-import navStyles from '../styles/_Nav.module.scss';
+import navStyles from '../styles/nav/Nav.module.scss';
 
 const Navigation = () => {
   const router = useRouter();
@@ -14,7 +14,8 @@ const Navigation = () => {
     dispatch(setUser({
         userID: 0,
         username: '',
-        allTags: []
+        allTags: [],
+        bgImage: ''
     }))
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
-import logRegStyles from '../styles/_LogReg.module.scss';
+import logRegStyles from '../styles/logReg/LogReg.module.scss';
 import { setSessionStorageUser } from '../utils/sessionStorage';
 
 const Register = () => {
@@ -25,7 +25,8 @@ const Register = () => {
             const userObject = {
                 userID: user.id,
                 username: user.username,
-                allTags: user.allTags
+                allTags: user.allTags,
+                bgImage: user.bgImage
             }
             dispatch(setUser(userObject))
             setSessionStorageUser(userObject)
@@ -57,7 +58,7 @@ const Register = () => {
                         <label htmlFor='password'>Password</label>
                         <input type='password' id='password'></input>
                     </div>
-                    <input type='submit'/>
+                    <input className={logRegStyles.submitBtn} type='submit'/>
                 </form>
             </div>
         </div>

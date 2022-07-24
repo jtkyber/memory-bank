@@ -14,7 +14,8 @@ export default async function handler(req, res) {
                 res.json({
                     id: user._id,
                     username: user.username,
-                    allTags: user.allTags
+                    allTags: user.allTags,
+                    bgImage: user.bgImage
                 });
             } else throw new Error('Incorrect password')
         }

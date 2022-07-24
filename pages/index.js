@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAllTags } from '../redux/userSlice';
-import homeStyles from '../styles/_Home.module.scss'
+import homeStyles from '../styles/home/Home.module.scss'
 import FolderImg from '../components/FolderImg';
 
 const Home = () => {

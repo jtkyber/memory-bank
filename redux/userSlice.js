@@ -3,18 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     userID: 0,
     username: '',
-    allTags: []
+    allTags: [],
+    bgImage: '/testbg.jpg'
 }
-
-// const setTags = (tags) => {
-//     if (tags?.length > 1) {
-//         return tags.split(',')
-//     } else if (tags?.length === 1) {
-//         return [tags]
-//     } else {
-//         return []
-//     }
-// }
 
 export const userSlice = createSlice({
     name: 'user',
@@ -24,13 +15,17 @@ export const userSlice = createSlice({
             state.userID = action.payload.userID
             state.username = action.payload.username
             state.allTags = action.payload.allTags
+            state.bgImage = action.payload.bgImage
         },
         setAllTags: (state, action) => {
             state.allTags = action.payload
+        },
+        setBg: (state, action) => {
+            state.bgImage = action.payload
         }
     }
 })
 
-export const { setUser, setAllTags } = userSlice.actions
+export const { setUser, setAllTags, setBg } = userSlice.actions
 
 export default userSlice.reducer;

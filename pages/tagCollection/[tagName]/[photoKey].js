@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUrl } from '../../../redux/photoSlice';
 import Image from 'next/image';
-import slideStyle from '../../../styles/_SlideView.module.scss'
+import ImgOptions from '../../../components/ImgOptions';
+import slideStyle from '../../../styles/slideView/SlideView.module.scss'
 
 const slideshowView = () => {
     const router = useRouter();
@@ -53,6 +54,9 @@ const slideshowView = () => {
         <div className={slideStyle.container}>
             <div className={`${slideStyle.exitBtn} ${isMobile ? slideStyle.mobile : null}`}>
                 <button onClick={handleExitClick}>X</button>
+            </div>
+            <div className={`${slideStyle.options} ${isMobile ? slideStyle.mobile : null}`}>
+                <ImgOptions />
             </div>
             <div onClick={goToPrevImg} className={`
                 ${slideStyle.imgBtn} 

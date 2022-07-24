@@ -1,0 +1,20 @@
+.container {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: max-content 1fr;
+      grid-template-rows: -webkit-max-content 1fr;
+      grid-template-rows: max-content 1fr;
+}
+
+.container .pageContainer {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-backdrop-filter: blur(3px) brightness(0.5);
+          backdrop-filter: blur(3px) brightness(0.5);
+}
+/*# sourceMappingURL=Layout.module.css.map */

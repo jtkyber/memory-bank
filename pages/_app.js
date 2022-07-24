@@ -9,28 +9,37 @@ import { setUser } from '../redux/userSlice';
 import { setSessionStorageUser } from '../utils/sessionStorage';
 import { setPhotos } from '../redux/photoSlice';
 import { setIsMobile } from '../redux/deviceSlice';
+import { setBg } from '../redux/userSlice';
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  let userIDFromStorage;
+  let usernameFromStorage;
+  let allTagsFromStorage;
+  let bgImageFromStorage;
+  const bgImage = useSelector(state => state.user.bgImage)
 
   useEffect(() => {
-    const userIDFromStorage = sessionStorage.getItem('userID')
-    const usernameFromStorage = sessionStorage.getItem('username')
-    const allTagsFromStorage = JSON?.parse(sessionStorage.getItem('allTags'))
+    userIDFromStorage = sessionStorage.getItem('userID')
+    usernameFromStorage = sessionStorage.getItem('username')
+    allTagsFromStorage = JSON?.parse(sessionStorage.getItem('allTags'))
+    bgImageFromStorage = sessionStorage.getItem('bgImage')
 
     if (router.asPath === '/login' || router.asPath === '/register') {
       setSessionStorageUser({
         userID: '',
         username: '',
-        allTags: ''
+        allTags: [],
+        bgImage: ''
       })
       sessionStorage.setItem('photos', [])
-    } else if (userIDFromStorage && usernameFromStorage && allTagsFromStorage) {
+    } else if (userIDFromStorage && usernameFromStorage && allTagsFromStorage && bgImageFromStorage) {
       dispatch(setUser({
         userID: userIDFromStorage,
         username: usernameFromStorage,
-        allTags: allTagsFromStorage
+        allTags: allTagsFromStorage,
+        bgImage: bgImageFromStorage
       }))
     } else router.push('/login')
 
@@ -43,8 +52,16 @@ const MyApp = ({ Component, pageProps }) => {
       setSessionStorageUser({
         userID: '',
         username: '',
-        allTags: ''
+        allTags: [],
+        bgImage: ''
       })
+
+      dispatch(setUser({
+        userID: '',
+        username: '',
+        allTags: [],
+        bgImage: ''
+      }))
     }
 
     if (router.pathname !== '/tagCollection/[tagName]/[photoKey]' && router.pathname !== '/tagCollection/[tagName]') {

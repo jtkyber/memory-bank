@@ -1,0 +1,66 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 2rem;
+
+    h1 {
+        font-weight: 400;
+        color: rgba($color: #ffffff, $alpha: 0.9);;
+    }
+
+    .tagFoldersContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .singleTagFolder {
+            width: 14rem;
+            height: 12rem;
+            // border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s ease-out;
+            cursor: pointer;
+            position: relative;
+
+            
+            h4 {
+                position: absolute;
+                width: 70%;
+                left: 52%;
+                top: 60%;
+                transform: translateX(-50%);
+                transition: opacity ease-out 0.15s;
+                text-align: center;
+                word-break: break-all;
+                line-height: 1rem;
+                font-size: 1rem;
+                color: rgba($color: #ffffff, $alpha: 0.9);;
+            }
+            
+            svg {
+                width: 100%;
+                height: auto;
+                transition: fill ease-out 0.15s;
+                fill: rgba($color: #ffffff, $alpha: 0.8);
+            }
+
+            &:hover {
+                svg {
+                    fill: rgba($color: #ffffff, $alpha: 0.5);
+                }
+                h4 {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}

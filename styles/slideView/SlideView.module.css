@@ -1,0 +1,170 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
+}
+
+.container .exitBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10rem;
+  height: 10rem;
+  opacity: 0;
+  z-index: 100;
+  -webkit-transition: opacity ease-out 0.2s;
+  transition: opacity ease-out 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.container .exitBtn.mobile {
+  opacity: 0.6;
+}
+
+.container .exitBtn:hover {
+  opacity: 0.6;
+}
+
+.container .exitBtn button {
+  width: 2rem;
+  height: 2rem;
+  margin: 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 25px;
+  cursor: pointer;
+  -webkit-transition: opacity ease-out 0.15s;
+  transition: opacity ease-out 0.15s;
+}
+
+.container .exitBtn button:hover {
+  opacity: 0.8;
+}
+
+.container .options {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10rem;
+  height: 10rem;
+  opacity: 0;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-transition: opacity ease-out 0.2s;
+  transition: opacity ease-out 0.2s;
+}
+
+.container .options:hover {
+  opacity: 1;
+}
+
+.container .photoContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.container .photoContainer img {
+  pointer-events: none;
+}
+
+.container .imgBtn {
+  position: absolute;
+  background-color: white;
+  width: 3rem;
+  height: 10rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition: opacity ease-out 0.2s;
+  transition: opacity ease-out 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.container .imgBtn:hover {
+  opacity: 0.3;
+}
+
+.container .imgBtn h1 {
+  font-weight: 800;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .imgBtn.mobile {
+  opacity: 0.3;
+  width: 2rem;
+  height: 6rem;
+}
+
+@media only screen and (min-width: 768px) and (min-height: 768px) {
+  .container .imgBtn.mobile {
+    height: 8rem;
+  }
+}
+
+.container .imgBtn.hide {
+  display: none;
+}
+
+.container .prevImgBtn {
+  left: 0;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.container .nextImgBtn {
+  right: 0;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+/*# sourceMappingURL=SlideView.module.css.map */

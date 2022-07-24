@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPhotos } from '../../redux/photoSlice';
 // import { setUser } from '../../redux/userSlice';
-import tagCollectionStyles from '../../styles/_TagCollection.module.scss'
+import tagCollectionStyles from '../../styles/tagCollection/TagCollection.module.scss'
 import Image from 'next/image';
 
 const tagCollection = () => {
