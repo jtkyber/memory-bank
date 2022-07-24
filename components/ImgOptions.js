@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBg } from '../redux/userSlice';
 import imgOptionStyles from '../styles/imgOptions/ImgOptions.module.scss';
@@ -9,6 +9,15 @@ const ImgOptions = () => {
     const dispatch = useDispatch();
     const userID = useSelector(state => state.user.userID);
     const router = useRouter();
+    const dropdownRef = useRef();
+
+    useEffect(() => {
+        document.addEventListener('click', handleOptionsBtnClick);
+
+        return () => {
+            document.removeEventListener('click', handleOptionsBtnClick);
+        }
+    }, [])
 
     const setCurrentImgAsBG = async () => {
         try {
@@ -35,15 +44,25 @@ const ImgOptions = () => {
         }
     }
 
+    const handleOptionsBtnClick = (e) => {
+        if (e.target.classList.contains(`${imgOptionStyles.dropdownBtn}`)) {
+            dropdownRef.current.classList.add(`${imgOptionStyles.active}`)
+        } else {
+            dropdownRef.current.classList.remove(`${imgOptionStyles.active}`)
+        }
+    }
+
     return (
         <>
-            <div className={imgOptionStyles.dropdown}>
+            <div ref={dropdownRef} className={imgOptionStyles.dropdown}>
                 <button className={imgOptionStyles.dropdownBtn}>
                     <OptionsDots />
                 </button>
                 <ul className={imgOptionStyles.optionsList}>
                     <li><button onClick={setCurrentImgAsBG}>Set as Background</button></li>
-                    <li><button>Update Tags</button></li>
+                    <li><button>Option 2</button></li>
+                    <li><button>Option 3</button></li>
+                    <li><button>Option 4</button></li>
                 </ul>
             </div>
         </>

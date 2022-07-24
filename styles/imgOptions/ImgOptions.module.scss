@@ -4,7 +4,7 @@
     position: absolute;
     margin: 2rem;
 
-    &:hover {
+    &.active {
         .dropdownBtn {
             display: none;
         }
@@ -19,12 +19,14 @@
         height: max-content;
         background-color: transparent;
         border: none;
+        cursor: pointer;
 
         svg {
             fill: rgba($color: #ffffff, $alpha: 0.8);
             stroke: transparent;
             width: 0.3rem;
             height: auto;
+            pointer-events: none;
         }
     }
     
