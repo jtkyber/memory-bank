@@ -3,12 +3,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBg } from '../redux/userSlice';
 import imgOptionStyles from '../styles/imgOptions/ImgOptions.module.scss';
-import OptionsDots from './optionsDots';
+import OptionsDots from './OptionsDots';
 
 const ImgOptions = () => {
     const dispatch = useDispatch();
     const userID = useSelector(state => state.user.userID);
-    const bgImage = useSelector(state => state.user.bg);
+    // const bgImage = useSelector(state => state.user.bg);
     const router = useRouter();
 
     const setCurrentImgAsBG = async () => {
