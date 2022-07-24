@@ -62,7 +62,7 @@
         align-items: flex-start;
         transition: opacity ease-out 0.2s;
 
-        &:hover {
+        &:hover, &.mobile {
             opacity: 1;
         }
     }

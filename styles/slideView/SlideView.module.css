@@ -85,7 +85,7 @@
   transition: opacity ease-out 0.2s;
 }
 
-.container .options:hover {
+.container .options:hover, .container .options.mobile {
   opacity: 1;
 }
 

@@ -8,7 +8,6 @@ import OptionsDots from './OptionsDots';
 const ImgOptions = () => {
     const dispatch = useDispatch();
     const userID = useSelector(state => state.user.userID);
-    // const bgImage = useSelector(state => state.user.bg);
     const router = useRouter();
 
     const setCurrentImgAsBG = async () => {
