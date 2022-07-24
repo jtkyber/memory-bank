@@ -13,6 +13,7 @@ const tagCollection = () => {
 
     const userID = useSelector(state => state.user.userID);
     const photos = useSelector(state => state.photos.photos);
+    const isMobile = useSelector(state => state.device.isMobile);
 
     const s3Bucket = 'https://memory-bank-bucket.s3.amazonaws.com/';
  
@@ -56,7 +57,7 @@ const tagCollection = () => {
         <div className={tagCollectionStyles.container}>
             {
                 photos.map((photo, i) => (
-                    <div key={i} onClick={() => handleImgClick(photo)} className={tagCollectionStyles.singleImg}>
+                    <div key={i} onClick={() => handleImgClick(photo)} className={`${tagCollectionStyles.singleImg} ${isMobile ? tagCollectionStyles.mobile : null}`}>
                         <Image 
                             src={photo.url}
                             alt='image'
@@ -68,7 +69,7 @@ const tagCollection = () => {
                             onLoad={(e) => onImgLoad(e, i)}
                         />
 
-                        <h3 className={tagCollectionStyles.location}>{photo.location}</h3>
+                        <h3 className={`${!isMobile ? tagCollectionStyles.location : tagCollectionStyles.locationMobile}`}>{photo.location}</h3>
                         <h3 className={tagCollectionStyles.loading}>Loading...</h3>
                     </div>
                 ))

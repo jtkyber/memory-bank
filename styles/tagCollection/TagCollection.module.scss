@@ -3,7 +3,7 @@
     flex-flow: row wrap;
     justify-content: center;
     align-content: flex-start;
-    gap: 2rem;
+    gap: 3rem;
     width: 100%;
     height: 100%;
     padding-top: 2rem;
@@ -12,11 +12,29 @@
         width: 20rem;
         height: 13rem;
         position: relative;
+        cursor: pointer;
         border-radius: 1rem;
         overflow: hidden;
 
+        &.mobile {
+            overflow: visible;
+            span {
+                border-radius: 1rem;
+            }
+        }
+        
         img {
             pointer-events: none;
+        }
+
+
+        .locationMobile {
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: rgba($color: #ffffff, $alpha: 0.9);
         }
 
         .location {
@@ -25,7 +43,7 @@
             height: 100%;
             text-align: center;
             opacity: 0;
-            color: white;
+            color: rgba($color: #ffffff, $alpha: 0.9);
             background-color: black;
             transition: opacity ease-out 0.2s;
             cursor: pointer;
