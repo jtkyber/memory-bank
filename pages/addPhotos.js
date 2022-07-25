@@ -97,7 +97,9 @@ const AddPhotos = () => {
     const uploadImgToS3 = async (e) => {
         e.preventDefault();
         try {
-            e.target.querySelector('#submit').disabled = true
+            for (let el of e.target.elements) {
+                el.disabled = true
+            }
             if (!userID.length) {
                 router.push('/login');
                 return;
@@ -133,7 +135,9 @@ const AddPhotos = () => {
         } catch (err) {
             console.log(err)
         } finally {
-            e.target.querySelector('#submit').disabled = false
+            for (let el of e.target.elements) {
+                el.disabled = false
+            }
         }
     }
 

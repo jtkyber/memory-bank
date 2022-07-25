@@ -76,6 +76,11 @@
   transition: opacity ease-out 0.15s;
 }
 
+.container .formContainer form .fileInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .container .formContainer form .fileInput:hover {
   opacity: 0.7;
 }
@@ -107,6 +112,11 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
+.container .formContainer form .descInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .container .formContainer form .locationInput {
   width: 100%;
   display: -webkit-box;
@@ -120,6 +130,11 @@
   margin-bottom: 0.5rem;
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.container .formContainer form .locationInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .container .formContainer form .tagContainer {
@@ -227,6 +242,11 @@
   letter-spacing: 0.07rem;
 }
 
+.container .formContainer form .tagContainer .tagInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .container .formContainer form .submitBtn {
   background-color: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.9);
@@ -245,7 +265,7 @@
 }
 
 .container .formContainer form .submitBtn:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

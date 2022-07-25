@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
@@ -8,6 +8,9 @@ import { setSessionStorageUser } from '../utils/sessionStorage';
 const Register = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const usernameRef = useRef();
+    const pwRef = useRef();
+    const sumbitBtnRef = useRef();
 
     const registerUser = async (username, password) => {
         try {
@@ -22,6 +25,11 @@ const Register = () => {
               })
             });
             const user = await res.json();
+            if (!user.id) {
+                usernameRef.current.disabled = false;
+                pwRef.current.disabled = false;
+                sumbitBtnRef.current.disabled = false;
+            }
             const userObject = {
                 userID: user.id,
                 username: user.username,
@@ -38,6 +46,9 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        usernameRef.current.disabled = true;
+        pwRef.current.disabled = true;
+        sumbitBtnRef.current.disabled = true;
         const username = e.target.querySelector('#username').value;
         const password = e.target.querySelector('#password').value;
 
@@ -51,14 +62,14 @@ const Register = () => {
                     <h2>Register</h2>
                     <div>
                         <label htmlFor='username'>UserName</label>
-                        <input type='text' id='username'></input>
+                        <input ref={usernameRef} type='text' id='username'></input>
                     </div>
 
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input type='password' id='password'></input>
+                        <input ref={pwRef} type='password' id='password'></input>
                     </div>
-                    <input className={logRegStyles.submitBtn} type='submit'/>
+                    <input ref={sumbitBtnRef} className={logRegStyles.submitBtn} type='submit'/>
                 </form>
             </div>
         </div>

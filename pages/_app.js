@@ -4,12 +4,11 @@ import Layout from '../components/Layout';
 import '../styles/globals.scss'
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
 import { setSessionStorageUser } from '../utils/sessionStorage';
 import { setPhotos } from '../redux/photoSlice';
 import { setIsMobile } from '../redux/deviceSlice';
-import { setBg } from '../redux/userSlice';
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -18,7 +17,6 @@ const MyApp = ({ Component, pageProps }) => {
   let usernameFromStorage;
   let allTagsFromStorage;
   let bgImageFromStorage;
-  const bgImage = useSelector(state => state.user.bgImage)
 
   useEffect(() => {
     userIDFromStorage = sessionStorage.getItem('userID')

@@ -78,6 +78,11 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+.container .logRegBox form div input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .container .logRegBox form .submitBtn {
   background-color: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.9);
@@ -89,6 +94,11 @@
   cursor: pointer;
   -webkit-transition: opacity ease-out 0.15s;
   transition: opacity ease-out 0.15s;
+}
+
+.container .logRegBox form .submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .container .logRegBox form .submitBtn:hover {

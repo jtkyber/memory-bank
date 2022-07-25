@@ -17,4 +17,42 @@
   -webkit-backdrop-filter: blur(3px) brightness(0.5);
           backdrop-filter: blur(3px) brightness(0.5);
 }
+
+.container .pageContainer::-webkit-scrollbar {
+  width: 1.1rem;
+  display: block;
+}
+
+.container .pageContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container .pageContainer::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.container .pageContainer::-webkit-scrollbar-thumb:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.container.mobile .pageContainer::-webkit-scrollbar {
+  width: 1.1rem;
+  display: none;
+}
+
+.container.mobile .pageContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container.mobile .pageContainer::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.container.mobile .pageContainer::-webkit-scrollbar-thumb:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
 /*# sourceMappingURL=Layout.module.css.map */

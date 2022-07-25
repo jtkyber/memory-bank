@@ -10,6 +10,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const usernameRef = useRef();
     const pwRef = useRef();
+    const sumbitBtnRef = useRef();
 
     const logInUser = async (username, password) => {
         try {
@@ -27,6 +28,7 @@ const Login = () => {
             if (!user.id) {
                 usernameRef.current.disabled = false;
                 pwRef.current.disabled = false;
+                sumbitBtnRef.current.disabled = false;
                 throw new Error('Incorrect Username or Password')
             }
             const userObject = {
@@ -47,6 +49,7 @@ const Login = () => {
         e.preventDefault();
         usernameRef.current.disabled = true;
         pwRef.current.disabled = true;
+        sumbitBtnRef.current.disabled = true;
 
         logInUser(usernameRef.current.value, pwRef.current.value);
     }
@@ -65,7 +68,7 @@ const Login = () => {
                         <label htmlFor='password'>Password</label>
                         <input ref={pwRef} type='password' id='password'></input>
                     </div>
-                    <input className={logRegStyles.submitBtn} type='submit'/>
+                    <input ref={sumbitBtnRef} className={logRegStyles.submitBtn} type='submit'/>
                 </form>
             </div>
         </div>

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Layout = ({ children }) => {
     const bgImage = useSelector(state => state.user.bgImage)
+    const isMobile = useSelector(state => state.device.isMobile)
 
     const bgStyling = {
         backgroundImage: bgImage ? `url('${bgImage}')` : 'url("/testbg.jpg")',
@@ -13,7 +14,7 @@ const Layout = ({ children }) => {
     }
     
     return (
-        <div style={bgStyling} className={layoutStyles.container}>
+        <div style={bgStyling} className={`${layoutStyles.container} ${isMobile ? layoutStyles.mobile : null}`}>
             <Nav />
             <main className={layoutStyles.pageContainer}>
                 {children}
