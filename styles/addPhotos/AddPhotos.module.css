@@ -64,6 +64,8 @@
   width: 20rem;
   height: 100%;
   border: 2px solid rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem black;
+          box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem black;
   border-radius: 1rem;
   padding: 1rem;
 }
