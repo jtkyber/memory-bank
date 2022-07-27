@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useReducer, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
-import logRegStyles from '../styles/logReg/LogReg.module.scss';
 import { setSessionStorageUser } from '../utils/sessionStorage';
+import LogReg from '../components/LogReg';
 
 const Register = () => {
     const router = useRouter();
@@ -11,6 +11,7 @@ const Register = () => {
     const usernameRef = useRef();
     const pwRef = useRef();
     const sumbitBtnRef = useRef();
+    const errorTextRef = useRef();
 
     const registerUser = async (username, password) => {
         try {
@@ -26,9 +27,7 @@ const Register = () => {
             });
             const user = await res.json();
             if (!user.id) {
-                usernameRef.current.disabled = false;
-                pwRef.current.disabled = false;
-                sumbitBtnRef.current.disabled = false;
+                throw new Error('Username already exists')
             }
             const userObject = {
                 userID: user.id,
@@ -40,7 +39,12 @@ const Register = () => {
             setSessionStorageUser(userObject)
             router.push('/');
         } catch (err) {
+            errorTextRef.current.innerText = err.message;
             console.log(err)
+        } finally {
+            usernameRef.current.disabled = false;
+            pwRef.current.disabled = false;
+            sumbitBtnRef.current.disabled = false;
         }
       }
 
@@ -56,23 +60,14 @@ const Register = () => {
     }
 
     return (
-        <div className={logRegStyles.container}>
-            <div className={logRegStyles.logRegBox}>
-                <form onSubmit={handleSubmit}>
-                    <h2>Register</h2>
-                    <div>
-                        <label htmlFor='username'>UserName</label>
-                        <input ref={usernameRef} type='text' id='username'></input>
-                    </div>
-
-                    <div>
-                        <label htmlFor='password'>Password</label>
-                        <input ref={pwRef} type='password' id='password'></input>
-                    </div>
-                    <input ref={sumbitBtnRef} className={logRegStyles.submitBtn} type='submit'/>
-                </form>
-            </div>
-        </div>
+        <LogReg 
+            page='Register'
+            handleSubmit={handleSubmit} 
+            usernameRef={usernameRef} 
+            pwRef={pwRef} 
+            sumbitBtnRef={sumbitBtnRef} 
+            errorTextRef={errorTextRef} 
+        />
     );
 };
 

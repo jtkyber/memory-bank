@@ -21,6 +21,6 @@ export default async function handler(req, res) {
         }
     } catch(err) {
         console.log(err)
-        res.status(404).json(`${err}`)
+        res.status(404).json(err)
     }
 }

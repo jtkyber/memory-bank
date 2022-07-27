@@ -44,8 +44,14 @@
 }
 
 .container .logRegBox form h2 {
-  margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.container .logRegBox form .errorText {
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  text-align: center;
 }
 
 .container .logRegBox form div {
