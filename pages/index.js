@@ -42,9 +42,10 @@ const Home = () => {
       <div className={homeStyles.tagFoldersContainer}>
         {
           allTags?.map((tag, i) => (
-            <div onClick={() => handleFolderClick(tag[0])} key={i} className={homeStyles.singleTagFolder}>
+            <div onClick={() => handleFolderClick(tag.name)} key={i} className={homeStyles.singleTagFolder}>
               <FolderImg />
-              <h4 className={homeStyles.folderName}>{tag[0]}</h4>
+              <h4 className={homeStyles.folderName}>{tag.name}</h4>
+              <h5 className={homeStyles.photoCount}>{tag.count}</h5>
             </div>
           ))
         }

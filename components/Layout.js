@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     const isMobile = useSelector(state => state.device.isMobile)
 
     const bgStyling = {
-        backgroundImage: bgImage ? `url('${bgImage}')` : 'url("/testbg.jpg")',
+        backgroundImage: (bgImage && bgImage != 'null') ? `url('${bgImage}')` : 'url("/defaultbg.jpg")',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center'

@@ -23,7 +23,7 @@
 
         .singleTagFolder {
             width: 14rem;
-            height: 12rem;
+            height: 11rem;
             // border: 2px solid black;
             display: flex;
             justify-content: center;
@@ -33,18 +33,30 @@
             position: relative;
 
             
-            h4 {
+            .folderName {
                 position: absolute;
                 width: 70%;
-                left: 52%;
-                top: 60%;
-                transform: translateX(-50%);
+                left: 50%;
+                top: 50%;
+                transform: translate(-45%, 100%);
                 transition: opacity ease-out 0.15s;
                 text-align: center;
                 word-break: break-all;
                 line-height: 1rem;
                 font-size: 1rem;
-                color: rgba($color: #ffffff, $alpha: 0.9);;
+                color: rgba($color: #ffffff, $alpha: 0.9);
+            }
+
+            .photoCount {
+                position: absolute;
+                width: 70%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-66%, -74%);
+                transition: opacity ease-out 0.15s;
+                text-align: center;
+                color: rgba($color: #ffffff, $alpha: 0.9);
+                font-weight: 400;
             }
             
             svg {
@@ -58,7 +70,7 @@
                 svg {
                     fill: rgba($color: #ffffff, $alpha: 0.5);
                 }
-                h4 {
+                h4, h5 {
                     opacity: 0.5;
                 }
             }

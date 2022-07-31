@@ -17,11 +17,15 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    allTags: [[String, Number]],
+    allTags: [{
+        name: String, 
+        weight: Number, 
+        count: Number
+    }],
     photos : [photoSchema],
     bgImage: String
 })
 
-const User = models.User27 || model('User27', userSchema, "users");
+const User = models.User29 || model('User29', userSchema, "users");
 
 export default User;

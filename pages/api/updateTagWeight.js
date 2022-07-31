@@ -14,14 +14,14 @@ export default async function handler(req, res) {
         const newTagList = allTags
 
         for (let tag of newTagList) {
-            if (tag[0] === tagName) {
-                tag[1] = JSON.parse(tag[1]) + 1
+            if (tag.name === tagName) {
+                tag.weight = JSON.parse(tag.weight) + 1
                 break
             }
         }
 
         newTagList.sort((a, b) => {
-            return b[1] - a[1]
+            return b.weight - a.weight
         })
 
         await User.updateOne( { _id: userID }, { allTags: newTagList })

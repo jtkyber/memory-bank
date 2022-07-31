@@ -4,7 +4,7 @@ const initialState = {
     userID: 0,
     username: '',
     allTags: [],
-    bgImage: '/testbg.jpg'
+    bgImage: '/defaultbg.jpg'
 }
 
 export const userSlice = createSlice({

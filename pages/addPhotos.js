@@ -143,7 +143,7 @@ const AddPhotos = () => {
 
 
     const handleImgChange = (e) => {
-        const file = URL.createObjectURL(e.target.files[0]);
+        const file = URL?.createObjectURL(e.target.files[0]);
         dispatch(setPhotos([file]));
     }
 

@@ -43,19 +43,26 @@ router
     allTags = allTags?.allTags;
 
     const currentTags = tags.map(tag => {
-      return [tag, 0]
+      return {
+        name: tag,
+        weight: 0,
+        count: 1
+      }
     });
 
     let newTagList = [];
 
     if (allTags?.length) {
       const newTags = currentTags.filter(tag => {
-        for (let existingTag of allTags) {
-          if (existingTag[0] === tag[0]) return
+        for (const existingTag of allTags) {
+          if (existingTag.name === tag.name) {
+            User.updateOne( { 'allTags._id': existingTag._id }, { $set: { 'allTags.$.count': existingTag.count++ } })
+            return
+          }
         }
         return tag
       })
-
+      console.log(newTags)
       newTagList = allTags.concat(newTags);
     } else newTagList = currentTags
     
