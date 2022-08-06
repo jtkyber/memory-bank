@@ -59,13 +59,14 @@
                 transition: opacity ease-out 0.15s;
                 width: max-content;
                 height: max-content;
+                opacity: 0.9;
 
                 &:hover {
                     opacity: 0.6;
                 }
 
                 svg {
-                    width: 2.5rem;
+                    width: 2.2rem;
                     height: auto;
                 }
             }
