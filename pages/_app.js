@@ -73,7 +73,7 @@ const MyApp = ({ Component, pageProps }) => {
     <> 
       <Head>
         <title>Memory Bank</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/mb-icon.ico" />
       </Head>
       <Layout>
         <Component {...pageProps} />

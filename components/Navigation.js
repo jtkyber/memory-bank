@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import LogoImg from './LogoImg';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
 import navStyles from '../styles/nav/Nav.module.scss';
@@ -22,7 +23,9 @@ const Navigation = () => {
   return (
         <nav className={ `${navStyles.container} ${router.pathname === '/tagCollection/[tagName]/[photoKey]' ? navStyles.hide : null}`}>
             <div className={ `${navStyles.navChunk} ${navStyles.leftNav}` }>
-                <h1 onClick={() => router.push('/')} className={navStyles.appTitle}>MB</h1>
+                <div onClick={() => router.push('/')} className={navStyles.appLogo}>
+                    <LogoImg />                    
+                </div>
             </div>
             <div className={ `${navStyles.navChunk} ${navStyles.rightNav}` }>
                 {
