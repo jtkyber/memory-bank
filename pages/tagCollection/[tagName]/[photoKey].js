@@ -5,12 +5,14 @@ import { setUrl } from '../../../redux/photoSlice';
 import Image from 'next/image';
 import ImgOptions from '../../../components/ImgOptions';
 import slideStyle from '../../../styles/slideView/SlideView.module.scss'
+import TagUpdateModal from '../../../components/TagUpdateModal';
 
 const slideshowView = () => {
     const router = useRouter();
     const { photoKey } = router.query;
     const userID = useSelector(state => state.user.userID);
     const photos = useSelector(state => state.photos.photos);
+    const currentTags = useSelector(state => state.singlePhoto.currentTags);
     const url = useSelector(state => state.photos.url);
     const isMobile = useSelector(state => state.device.isMobile);
     const dispatch = useDispatch();
@@ -52,6 +54,11 @@ const slideshowView = () => {
 
     return (
         <div className={slideStyle.container}>
+            {
+            currentTags.length ?
+            <TagUpdateModal />
+            : null
+            }
             <div className={`${slideStyle.exitBtn} ${isMobile ? slideStyle.mobile : null}`}>
                 <button onClick={handleExitClick}>X</button>
             </div>

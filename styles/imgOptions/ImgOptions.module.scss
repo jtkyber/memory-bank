@@ -37,10 +37,8 @@
         height: max-content;
         width: max-content;
         flex-flow: column nowrap;
-        gap: 0.2rem;
         justify-content: center;
         align-items: center;
-        background-color: rgba($color: #202020, $alpha: 0.6);
         border: 1px solid rgba($color: #ffffff, $alpha: 0.6);
         border-bottom: none;
 
@@ -55,16 +53,18 @@
             button {
                 width: 100%;
                 height: 100%;
-                background: none;
+                background-color: rgba($color: #202020, $alpha: 0.6);
                 border: none;
                 outline: none;
                 padding: 1rem;
                 color: rgba($color: #ffffff, $alpha: 0.8);
                 cursor: pointer;
-                transition: opacity ease-out 0.15s;
+                // transition: all ease-out 0.15s;
 
                 &:hover {
-                    opacity: 0.7;
+                    background-color: rgba($color: #ffffff, $alpha: 0.6);
+                    color: rgba($color: #000000, $alpha: 0.8);
+                    // opacity: 0.7;
                 }
             }
         }

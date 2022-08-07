@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     const isMobile = useSelector(state => state.device.isMobile)
 
     const bgStyling = {
-        backgroundImage: (bgImage.includes('https://memory-bank-bucket.s3.amazonaws.com')) ? `url('${bgImage}')` : 'url("/defaultbg.jpg")',
+        backgroundImage: (bgImage?.includes('https://memory-bank-bucket.s3.amazonaws.com')) ? `url('${bgImage}')` : 'url("/defaultbg.jpg")',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center'

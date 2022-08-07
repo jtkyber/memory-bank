@@ -59,13 +59,13 @@ const tagCollection = () => {
                 photos.map((photo, i) => (
                     <div key={i} onClick={() => handleImgClick(photo)} className={`${tagCollectionStyles.singleImg} ${isMobile ? tagCollectionStyles.mobile : null}`}>
                         <Image 
-                            src={photo.url}
+                            src={`https://memory-bank-bucket.s3.amazonaws.com/${photo.key}`}
                             alt='image'
                             layout='fill'
                             objectFit='cover'
                             quality={40}
                             placeholder='blur'
-                            blurDataURL={photo.url}
+                            blurDataURL={`https://memory-bank-bucket.s3.amazonaws.com/${photo.key}`}
                             onLoad={(e) => onImgLoad(e, i)}
                         />
 
