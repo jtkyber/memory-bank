@@ -37,9 +37,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: 20rem;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -58,9 +56,9 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -69,6 +67,7 @@
   height: -moz-max-content;
   height: max-content;
   gap: 0.3rem;
+  margin-bottom: 2rem;
 }
 
 .container form .tagContainer .singleTag {
@@ -138,10 +137,9 @@
 }
 
 .container form .tagContainer .tagInput {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 10rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
   height: 1.5rem;
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.8);

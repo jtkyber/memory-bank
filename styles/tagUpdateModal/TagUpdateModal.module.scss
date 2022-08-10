@@ -23,7 +23,7 @@
         flex-flow: column nowrap;
         align-items: center;
         gap: 1rem;
-        width: max-content;
+        width: 20rem;
         height: max-content;
         border: 2px solid rgba($color: #ffffff, $alpha: 0.8);
         box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem rgba($color: #000000, $alpha: 1.0);
@@ -33,11 +33,12 @@
         .tagContainer {    
             display: flex;
             flex-flow: row wrap;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             width: 100%;
             height: max-content;
             gap: 0.3rem;
+            margin-bottom: 2rem;
 
             .singleTag {
                 position: relative;
@@ -82,8 +83,7 @@
             }
 
             .tagInput {
-                display: flex;
-                width: 10rem;
+                flex: 0 1 100%;
                 height: 1.5rem;
                 background-color: rgba($color: #000000, $alpha: 0.8);
                 border: 1px solid rgba($color: #ffffff, $alpha: 0.8);
