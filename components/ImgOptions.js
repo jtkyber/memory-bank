@@ -57,7 +57,7 @@ const ImgOptions = () => {
 
     const handleOptionsBtnClick = (e) => {
         if (e.target.classList.contains(`${imgOptionStyles.dropdownBtn}`)) {
-            dropdownRef.current.classList.add(`${imgOptionStyles.active}`)
+            dropdownRef.current.classList.toggle(`${imgOptionStyles.active}`)
         } else {
             dropdownRef.current.classList.remove(`${imgOptionStyles.active}`)
         }
@@ -70,8 +70,8 @@ const ImgOptions = () => {
                     <OptionsDots />
                 </button>
                 <ul className={imgOptionStyles.optionsList}>
-                    <li><button onClick={setCurrentImgAsBG}>Set as Background</button></li>
                     <li><button onClick={getTagsForPhoto}>Edit Tags</button></li>
+                    <li><button onClick={setCurrentImgAsBG}>Set as Background</button></li>
                 </ul>
             </div>
         </>

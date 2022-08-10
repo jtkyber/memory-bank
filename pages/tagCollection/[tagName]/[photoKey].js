@@ -62,9 +62,6 @@ const slideshowView = () => {
             <div className={`${slideStyle.exitBtn} ${isMobile ? slideStyle.mobile : null}`}>
                 <button onClick={handleExitClick}>X</button>
             </div>
-            <div className={`${slideStyle.options} ${isMobile ? slideStyle.mobile : null}`}>
-                <ImgOptions />
-            </div>
             <div onClick={goToPrevImg} className={`
                 ${slideStyle.imgBtn} 
                 ${slideStyle.prevImgBtn} 
@@ -87,6 +84,12 @@ const slideshowView = () => {
                     />
                     : null
                 }
+            </div>
+            <div className={`${slideStyle.rightSide} ${isMobile ? slideStyle.mobile : null}`}>
+                <h2>i</h2>
+                <div className={slideStyle.options}>
+                    <ImgOptions />
+                </div>
             </div>
             <div onClick={goToNextImg} className={`
                 ${slideStyle.imgBtn} 

@@ -5,12 +5,10 @@
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  position: absolute;
-  margin: 2rem;
 }
 
 .dropdown.active .dropdownBtn {
-  display: none;
+  opacity: 0.6;
 }
 
 .dropdown.active .optionsList {
@@ -28,6 +26,17 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: max-content;
+  -webkit-transition: opacity 0.15s ease-out;
+  transition: opacity 0.15s ease-out;
+}
+
+.dropdown .dropdownBtn:hover {
+  opacity: 0.6;
 }
 
 .dropdown .dropdownBtn svg {
@@ -39,6 +48,9 @@
 }
 
 .dropdown .optionsList {
+  position: absolute;
+  right: 0;
+  top: 5rem;
   display: none;
   padding: 0;
   list-style: none;
@@ -52,14 +64,12 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  gap: 0.2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(32, 32, 32, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-bottom: none;
 }
@@ -82,17 +92,16 @@
 .dropdown .optionsList li button {
   width: 100%;
   height: 100%;
-  background: none;
+  background-color: rgba(32, 32, 32, 0.6);
   border: none;
   outline: none;
   padding: 1rem;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  -webkit-transition: opacity ease-out 0.15s;
-  transition: opacity ease-out 0.15s;
 }
 
 .dropdown .optionsList li button:hover {
-  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.8);
 }
 /*# sourceMappingURL=ImgOptions.module.css.map */

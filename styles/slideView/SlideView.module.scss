@@ -49,23 +49,50 @@
         }
     }
 
-    .options {
+    .rightSide {
         position: absolute;
         right: 0;
         top: 0;
-        width: 10rem;
-        height: 10rem;
+        width: max-content;
+        height: max-content;
+        padding: 2rem;
         opacity: 0;
         z-index: 100;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
         transition: opacity ease-out 0.2s;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
 
         &:hover, &.mobile {
             opacity: 1;
         }
+
+        h2 {
+            color: rgba($color: #ffffff, $alpha: 0.7);
+            background-color: rgba($color: #000000, $alpha: 0.6);
+            // border: 2px solid rgba($color: #000000, $alpha: 1.0);
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 400;
+            transition: opacity 0.15s ease-out;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        .options {
+            height: max-content;
+        }
     }
+
 
     .photoContainer {
         width: 100%;
