@@ -31,6 +31,7 @@
 
 .container.hide {
   height: 0;
+  border: none;
   overflow: hidden;
 }
 
@@ -84,16 +85,26 @@
           justify-content: flex-start;
 }
 
-.container .navChunk.leftNav .appTitle {
+.container .navChunk.leftNav .appLogo {
   cursor: pointer;
   -webkit-transition: opacity ease-out 0.15s;
   transition: opacity ease-out 0.15s;
-  font-size: 2.5rem;
-  font-weight: 400;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  opacity: 0.9;
 }
 
-.container .navChunk.leftNav .appTitle:hover {
+.container .navChunk.leftNav .appLogo:hover {
   opacity: 0.6;
+}
+
+.container .navChunk.leftNav .appLogo svg {
+  width: 2.2rem;
+  height: auto;
 }
 
 .container .navChunk.rightNav {
