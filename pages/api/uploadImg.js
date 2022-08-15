@@ -25,7 +25,7 @@ router
   try {
     await connectMongo();
     const { description, location, tags, id, key } = req.body;
-    if (!id.length) throw new Error('Cannot add image while logged out')
+    if (!id?.length) throw new Error('Cannot add image while logged out')
     
     // await uploadFile(file);
     // await unlinkFile(file.path);

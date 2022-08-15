@@ -36,7 +36,7 @@ const ImgOptions = () => {
             })
     
             const newBgUrl = await res.json()
-            if (!newBgUrl.length) throw new Error('A problem occured when updating your bg image')
+            if (!newBgUrl?.length) throw new Error('A problem occured when updating your bg image')
 
             dispatch(setBg(newBgUrl))
             sessionStorage.setItem('bgImage', newBgUrl)

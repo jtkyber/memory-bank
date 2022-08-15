@@ -25,7 +25,7 @@ const TagUpdateModal = () => {
     }, [])
 
     useEffect(() => {
-        if (currentTags.length >= 5) {
+        if (currentTags?.length >= 5) {
             tagInputRef.current.disabled = true
         } else if (tagInputRef.current.disabled) {
             tagInputRef.current.disabled = false
@@ -33,11 +33,11 @@ const TagUpdateModal = () => {
     }, [currentTags])
 
     const handleCommaPress = (e) => {
-        if (e?.data?.[e.data.length-1] !== ',') return
+        if (e?.data?.[e.data?.length-1] !== ',') return
         const currentTag = tagInputRef.current.value.split(',')[0]
-        if (currentTag.length <= 2) return
+        if (currentTag?.length <= 2) return
         const endCharsNotAccepted = ['&','-']
-        if (endCharsNotAccepted.includes(currentTag[0]) || endCharsNotAccepted.includes(currentTag[currentTag.length-1])) return
+        if (endCharsNotAccepted.includes(currentTag[0]) || endCharsNotAccepted.includes(currentTag[currentTag?.length-1])) return
 
         const regex = /^[a-zA-Z0-9-& ]+$/
         if (!currentTag.match(regex)) {
@@ -90,7 +90,7 @@ const TagUpdateModal = () => {
                     currentTags.map((tag, i) => (
                         <div key={i} className={tagUpdateStyles.singleTag}>
                             <h5>{tag}</h5>
-                            <h3 onClick={() => {if (currentTags.length > 1) dispatch(removeTagFromCurrent(i))}}>x</h3>
+                            <h3 onClick={() => {if (currentTags?.length > 1) dispatch(removeTagFromCurrent(i))}}>x</h3>
                         </div>
                     ))
                     }

@@ -29,7 +29,7 @@ const slideshowView = () => {
             if (photo.key === photoKey) {
                 const cuttoffIndex = router.asPath.lastIndexOf('/');
                 const newPath = router.asPath.slice(0, cuttoffIndex)
-                const newIndex = (i === 0) ? (photos.length - 1) : i - 1;
+                const newIndex = (i === 0) ? (photos?.length - 1) : i - 1;
                 router.replace(`${newPath}/${photos[newIndex].key}`)
             }
         });
@@ -40,7 +40,7 @@ const slideshowView = () => {
             if (photo.key === photoKey) {
                 const cuttoffIndex = router.asPath.lastIndexOf('/');
                 const newPath = router.asPath.slice(0, cuttoffIndex)
-                const newIndex = (i === (photos.length - 1)) ? 0 : i + 1;
+                const newIndex = (i === (photos?.length - 1)) ? 0 : i + 1;
                 router.replace(`${newPath}/${photos[newIndex].key}`)
             }
         });
@@ -55,7 +55,7 @@ const slideshowView = () => {
     return (
         <div className={slideStyle.container}>
             {
-            currentTags.length ?
+            currentTags?.length ?
             <TagUpdateModal />
             : null
             }
@@ -66,7 +66,7 @@ const slideshowView = () => {
                 ${slideStyle.imgBtn} 
                 ${slideStyle.prevImgBtn} 
                 ${isMobile ? slideStyle.mobile : null}
-                ${photos.length <= 1 ? slideStyle.hide : null}
+                ${photos?.length <= 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'<'}</h1>
             </div>
@@ -95,7 +95,7 @@ const slideshowView = () => {
                 ${slideStyle.imgBtn} 
                 ${slideStyle.nextImgBtn}
                 ${isMobile ? slideStyle.mobile : null}
-                ${photos.length <= 1 ? slideStyle.hide : null}
+                ${photos?.length <= 1 ? slideStyle.hide : null}
             `}>
                 <h1>{'>'}</h1>
             </div>

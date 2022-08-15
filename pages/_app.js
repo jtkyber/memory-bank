@@ -44,7 +44,7 @@ const MyApp = ({ Component, pageProps }) => {
       }))
     } else router.push('/login')
 
-    if (photosFromStorage.length && !photos.length) {
+    if (photosFromStorage?.length && !photos?.length) {
       dispatch(setPhotos(JSON.parse(photosFromStorage)))
     }
 

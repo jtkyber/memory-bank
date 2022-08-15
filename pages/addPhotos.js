@@ -26,7 +26,7 @@ const AddPhotos = () => {
     }, [])
 
     useEffect(() => {
-        if (tags.length >= 5) {
+        if (tags?.length >= 5) {
             tagInputRef.current.disabled = true
         } else if (tagInputRef.current.disabled) {
             tagInputRef.current.disabled = false
@@ -34,11 +34,11 @@ const AddPhotos = () => {
     }, [tags])
     
     const handleCommaPress = (e) => {
-        if (e?.data?.[e.data.length-1] !== ',') return
+        if (e?.data?.[e.data?.length-1] !== ',') return
         const currentTag = tagInputRef.current.value.split(',')[0]
-        if (currentTag.length <= 2) return
+        if (currentTag?.length <= 2) return
         const endCharsNotAccepted = ['&','-']
-        if (endCharsNotAccepted.includes(currentTag[0]) || endCharsNotAccepted.includes(currentTag[currentTag.length-1])) return
+        if (endCharsNotAccepted.includes(currentTag[0]) || endCharsNotAccepted.includes(currentTag[currentTag?.length-1])) return
 
         const regex = /^[a-zA-Z0-9-& ]+$/
         if (!currentTag.match(regex)) {
@@ -86,7 +86,7 @@ const AddPhotos = () => {
         const length = 32;
         const result = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const charactersLength = characters.length;
+        const charactersLength = characters?.length;
 
         for ( const i = 0; i < length; i++ ) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -100,10 +100,10 @@ const AddPhotos = () => {
             for (let el of e.target.elements) {
                 el.disabled = true
             }
-            if (!userID.length) {
+            if (!userID?.length) {
                 router.push('/login');
                 return;
-            } else if (!tags.length) throw new Error('Must include at least one tag')
+            } else if (!tags?.length) throw new Error('Must include at least one tag')
 
             const file = e.target.querySelector('#image')?.files[0]
             Object.defineProperty(file, 'name', {
