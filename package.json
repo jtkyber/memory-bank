@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "pushfix":"git add . && git commit -m'fix' && git push origin main"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
