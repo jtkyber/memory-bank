@@ -102,6 +102,5 @@ const slideshowView = () => {
         </div>
     );
 };
-//test
 
 export default slideshowView;
