@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     currentTags: [],
-    originalTags: []
+    originalTags: [],
+    currentPhoto: {}
 }
 
 export const singlePhotoSlice = createSlice({
@@ -20,10 +21,13 @@ export const singlePhotoSlice = createSlice({
         },
         setOriginalTags: (state, action) => {
             state.originalTags = action.payload
+        },
+        setCurrentPhoto: (state, action) => {
+            state.currentPhoto = action.payload
         }
     }
 })
 
-export const { setCurrentTags, addTagToCurrent, removeTagFromCurrent, setOriginalTags } = singlePhotoSlice.actions
+export const { setCurrentTags, addTagToCurrent, removeTagFromCurrent, setOriginalTags, setCurrentPhoto } = singlePhotoSlice.actions
 
 export default singlePhotoSlice.reducer;
