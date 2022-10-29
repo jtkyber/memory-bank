@@ -13,7 +13,8 @@
         top: 0;
         width: 10rem;
         height: 10rem;
-        opacity: 0;
+        padding: 2rem;
+        opacity: 0.2;
         z-index: 100;
         transition: opacity ease-out 0.2s;
         display: flex;
@@ -31,7 +32,6 @@
         button {
             width: 2rem;
             height: 2rem;
-            margin: 2rem;
             background-color: rgba($color: #000000, $alpha: 0.8);
             color: rgba($color: #ffffff, $alpha: 1.0);
             border: none;
@@ -53,16 +53,16 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: max-content;
-        height: max-content;
+        width: 10rem;
+        height: 10rem;
         padding: 2rem;
-        opacity: 0;
+        opacity: 0.2;
         z-index: 100;
         transition: opacity ease-out 0.2s;
         display: flex;
         flex-flow: row nowrap;
-        align-items: center;
-        justify-items: center;
+        align-items: flex-start;
+        justify-items: flex-end;
         gap: 2rem;
 
         &:hover, &.mobile {
@@ -114,7 +114,7 @@
         bottom: 0;
         margin: auto 0;
         z-index: 100;
-        opacity: 0;
+        opacity: 0.15;
         transition: opacity ease-out 0.2s;
         display: flex;
         align-items: center;
@@ -168,12 +168,14 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        background-color: rgba($color: #000000, $alpha: 0.5);
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        backdrop-filter: blur(2px);
         color: rgba($color: #ffffff, $alpha: 1.0);
-        transition: opacity ease-out 0.2s;
+        transition: opacity ease-out 0.2s, z-index 0.2s linear 0s;
         gap: 1rem;
 
         &.active {
+            transition: opacity ease-out 0.2s;
             opacity: 1;
             z-index: 1000;
         }

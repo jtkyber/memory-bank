@@ -24,6 +24,8 @@
 
 .container input, .container textarea {
   color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.3rem;
+  padding: 0.3rem;
 }
 
 .container .formContainer {
@@ -47,7 +49,7 @@
 }
 
 .container .formContainer h1 {
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .container .formContainer form {
@@ -63,9 +65,9 @@
           align-items: center;
   width: 20rem;
   height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  -webkit-box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem black;
-          box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem black;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0rem 0rem 1rem 0.2rem black;
+          box-shadow: 0rem 0rem 1rem 0.2rem black;
   border-radius: 1rem;
   padding: 1rem;
 }
@@ -167,7 +169,7 @@
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  height: 1.5rem;
+  height: 1.7rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,8 +180,8 @@
       -ms-flex-align: center;
           align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.8);
-  border-radius: 0.2rem;
-  padding: 0 0.3rem;
+  border-radius: 0.5rem;
+  padding: 00.4rem;
 }
 
 .container .formContainer form .tagContainer .singleTag h5 {
@@ -214,6 +216,7 @@
   width: 100%;
   height: 100%;
   background-color: black;
+  border-radius: inherit;
   color: red;
   cursor: pointer;
   -webkit-transition: opacity ease-out 0.15s;
@@ -236,7 +239,7 @@
       -ms-flex: 1;
           flex: 1;
   width: 4rem;
-  height: 1.5rem;
+  height: 1.7rem;
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.8);
   outline: none;
@@ -250,9 +253,9 @@
 }
 
 .container .formContainer form .submitBtn {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  border: none;
   border-radius: 0.5rem;
   outline: none;
   padding: 0.4rem;
@@ -260,6 +263,7 @@
   cursor: pointer;
   -webkit-transition: opacity ease-out 0.15s;
   transition: opacity ease-out 0.15s;
+  font-weight: 600;
 }
 
 .container .formContainer form .submitBtn:hover {

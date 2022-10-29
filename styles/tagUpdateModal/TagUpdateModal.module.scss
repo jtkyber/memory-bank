@@ -2,7 +2,8 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #000000, $alpha: 0.5);
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    backdrop-filter: blur(2px);
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -22,11 +23,10 @@
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        gap: 1rem;
         width: 20rem;
         height: max-content;
-        border: 2px solid rgba($color: #ffffff, $alpha: 0.8);
-        box-shadow: 0.5rem 0.5rem 1.5rem 0.2rem rgba($color: #000000, $alpha: 1.0);
+        border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+        box-shadow: 0rem 0rem 1rem 0.2rem rgba($color: #000000, $alpha: 1.0);
         border-radius: 1rem;
         padding: 1rem;
 
@@ -38,18 +38,19 @@
             width: 100%;
             height: max-content;
             gap: 0.3rem;
-            margin-bottom: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
 
             .singleTag {
                 position: relative;
                 width: max-content;
-                height: 1.5rem;
+                height: 1.7rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border: 2px solid rgba($color: #ffffff, $alpha: 0.8);
-                border-radius: 0.2rem;
-                padding: 0 0.3rem;
+                border-radius: 0.5rem;
+                padding: 0.4rem;
     
                 h5 {
                     display: flex;
@@ -60,7 +61,7 @@
                     letter-spacing: 0.07rem;
                     color: rgba($color: #ffffff, $alpha: 0.9);
                 }
-    
+
                 h3 {
                     position: absolute;
                     display: flex;
@@ -71,11 +72,12 @@
                     width: 100%;
                     height: 100%;
                     background-color: rgba($color: #000000, $alpha: 1.0);
+                    border-radius: inherit;
                     color: red;
                     cursor: pointer;
                     transition: opacity ease-out 0.15s;
                     user-select: none;
-    
+
                     &:hover {
                         opacity: 0.9;
                     }
@@ -90,6 +92,9 @@
                 outline: none;
                 font-family: Arial, Helvetica, sans-serif;
                 letter-spacing: 0.07rem;
+                border-radius: 0.3rem;
+                padding: 0.3rem;
+                margin-top: 0.3rem;
 
                 &:disabled {
                     opacity: 0.5;
@@ -99,14 +104,16 @@
         }
 
         .submitBtn {
-            background-color: rgba($color: #000000, $alpha: 0.8);
-            color: rgba($color: #ffffff, $alpha: 0.9);
-            border: 2px solid rgba($color: #ffffff, $alpha: 0.8);
+            background-color: rgba($color: #ffffff, $alpha: 0.9);;
+            color: rgba($color: #000000, $alpha: 1);
+            border: none;
             border-radius: 0.5rem;
             outline: none;
             padding: 0.4rem;
             cursor: pointer;
             transition: opacity ease-out 0.15s;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             
             &:hover {
                 opacity: 0.7;
